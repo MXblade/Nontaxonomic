@@ -1,4 +1,4 @@
-package bistu.idcc.functions;
+ï»¿package bistu.idcc.functions;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,16 +6,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * ¶ÔÎÄ¼şºÍÎÄ¼ş¼Ğ½øĞĞÇå¿Õ´´½¨²Ù×÷
- * clearpathÇå¿Õ´´½¨ÎÄ¼ş¼Ğ
- * cleartxtÇå¿Õ´´½¨ÎÄ¼ş
+ * å¯¹æ–‡ä»¶å’Œæ–‡ä»¶å¤¹è¿›è¡Œæ¸…ç©ºåˆ›å»ºæ“ä½œ
+ * clearpathæ¸…ç©ºåˆ›å»ºæ–‡ä»¶å¤¹
+ * cleartxtæ¸…ç©ºåˆ›å»ºæ–‡ä»¶
  * @author Joen
  *
  */
 public class ClearTxt_Path {
 	
 	/**
-	 * Çå¿ÕpathÂ·¾¶ÏÂµÄÓĞÎÄ¼ş²¢´´½¨pathÂ·¾¶µÄÎÄ¼ş¼Ğ
+	 * æ¸…ç©ºpathè·¯å¾„ä¸‹çš„æœ‰æ–‡ä»¶å¹¶åˆ›å»ºpathè·¯å¾„çš„æ–‡ä»¶å¤¹
 	 * @param path
 	 * @throws IOException
 	 */
@@ -34,7 +34,7 @@ public class ClearTxt_Path {
 	}
 
 	/**
-	 * ÎÄ¼ş´æÔÚÔòÇå¿ÕÎÄ¼şÄÚÈİ£¬²»´æÔÚÔò´´½¨¸ÃÎÄ¼ş
+	 * æ–‡ä»¶å­˜åœ¨åˆ™æ¸…ç©ºæ–‡ä»¶å†…å®¹ï¼Œä¸å­˜åœ¨åˆ™åˆ›å»ºè¯¥æ–‡ä»¶
 	 * @param path
 	 * @throws IOException 
 	 */
@@ -44,7 +44,7 @@ public class ClearTxt_Path {
 				newfile.createNewFile();
 		}
 		
-		//Çå¿ÕÎÄ¼şÄÚÈİ
+		//æ¸…ç©ºæ–‡ä»¶å†…å®¹
 	    FileWriter fileClear = new FileWriter(path);
 	    BufferedWriter bufferClear = new BufferedWriter(fileClear);
 	    bufferClear.write("");

@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,33 +17,33 @@ import bistu.idcc.functions.ClearTxt_Path;
 import bistu.idcc.parser.*;
 
 public class EntityExtraction {
-	//´ÊµäµÄÎ»ÖÃ
+	//è¯å…¸çš„ä½ç½®
 	public static String termpath;
-	//·Ö´ÊºóµÄÓïÁÏÎ»ÖÃ
+	//åˆ†è¯åçš„è¯­æ–™ä½ç½®
 	public static String parserpath;
-	//½øĞĞ´ÊµäÆ¥ÅäºóÅ×È¥µ¥¸öÊµÌåÖ®ºóµÄÓïÁÏÎ»ÖÃ
+	//è¿›è¡Œè¯å…¸åŒ¹é…åæŠ›å»å•ä¸ªå®ä½“ä¹‹åçš„è¯­æ–™ä½ç½®
 	public static String tagparpath;
 	public static ArrayList<String> term;
 	
 	public EntityExtraction() throws IOException{
 		
 		term = new ArrayList<String>();
-		//ÊµÌå´ÊµäµÄÎ»ÖÃ
+		//å®ä½“è¯å…¸çš„ä½ç½®
 		termpath = "sourceFile/PatentTerm.txt";
-		//·Ö´ÊºóµÄÓïÁÏµÄÎ»ÖÃ
+		//åˆ†è¯åçš„è¯­æ–™çš„ä½ç½®
 		parserpath = "sourceFile/after_parser.txt";
-		//³éÈ¡ºó±ê¼ÇÊµÌåµÄÓïÁÏ
+		//æŠ½å–åæ ‡è®°å®ä½“çš„è¯­æ–™
 		tagparpath = "sourceFile/candidate/TagParser.txt";
 		readTerm(termpath);
 		
 
 		
-		//´´½¨Êä³öÎÄ¼ş£¬½«Ã¿¾ä»°Æ¥ÅäµÄÊµÌåÊä³öµ½ExtractTerm.txt£¬½«±ê¼ÇºÃÊµÌåµÄÓïÁÏÊä³öµ½TagParser.txt
+		//åˆ›å»ºè¾“å‡ºæ–‡ä»¶ï¼Œå°†æ¯å¥è¯åŒ¹é…çš„å®ä½“è¾“å‡ºåˆ°ExtractTerm.txtï¼Œå°†æ ‡è®°å¥½å®ä½“çš„è¯­æ–™è¾“å‡ºåˆ°TagParser.txt
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(tagparpath);
 		
 		
-		//¶ÁÈ¡·Ö´ÊÓïÁÏ
+		//è¯»å–åˆ†è¯è¯­æ–™
 		File readparser = new File(parserpath);
 		InputStreamReader readps = new InputStreamReader(new FileInputStream(readparser),"GBK");
 		
@@ -71,7 +71,7 @@ public class EntityExtraction {
 	}
 	
 	/**
-	 * ½²PatentTerm.txtÖĞµÄ´Ê¶ÁÈëµ½Êı×éÖĞ£¬±ÜÃâÃ¿´ÎÆ¥Åä¶¼½øĞĞ¶ÁÈ¡²Ù×÷
+	 * è®²PatentTerm.txtä¸­çš„è¯è¯»å…¥åˆ°æ•°ç»„ä¸­ï¼Œé¿å…æ¯æ¬¡åŒ¹é…éƒ½è¿›è¡Œè¯»å–æ“ä½œ
 	 */
 	public static void readTerm(String path) throws IOException{
 		File readfile = new File(path);
@@ -91,22 +91,22 @@ public class EntityExtraction {
 	
 	
 	/**
-	 * Æ¥ÅäwordsÊÇ·ñÎª´ÊµäPatentTerm.txtÖĞµÄ´Ê
+	 * åŒ¹é…wordsæ˜¯å¦ä¸ºè¯å…¸PatentTerm.txtä¸­çš„è¯
 	 * @throws IOException
 	 */
 	public static void matchTerm(String sentence) throws IOException {
 		
-		//ÓÃÓÚÍ³¼ÆÃ¿¾ä»°µÄµÄÊµÌåÊıÄ¿,ÌÔÌ­²¿·Ö¾ä×ÓÖĞÊµÌåÊıÄ¿Ğ¡ÓÚ2µÄ¾ä×Ó£¬µ¥¸öÊµÌåµÄ¾ä×ÓÎŞÊµÑéµÄÒâÒå¡£
+		//ç”¨äºç»Ÿè®¡æ¯å¥è¯çš„çš„å®ä½“æ•°ç›®,æ·˜æ±°éƒ¨åˆ†å¥å­ä¸­å®ä½“æ•°ç›®å°äº2çš„å¥å­ï¼Œå•ä¸ªå®ä½“çš„å¥å­æ— å®éªŒçš„æ„ä¹‰ã€‚
 		int entitynum = 0;
 		
 		//
 		
 		String ss = "";
-		//°´ÕÕÖÆ±í·û¡°\t¡±°ÑÃ¿¾ä»°·Ö¸î³ÉÃ¿¸ö´ÊÓÃStringÊı×é´æ´¢
+		//æŒ‰ç…§åˆ¶è¡¨ç¬¦â€œ\tâ€æŠŠæ¯å¥è¯åˆ†å‰²æˆæ¯ä¸ªè¯ç”¨Stringæ•°ç»„å­˜å‚¨
 		String[] swlist = sentence.split("   ");
 		for(int i = 0;i < swlist.length; i++)
 		{
-			//µ¥¸ö´Êsword£¬½«¡°·¢¶¯»ú/n¡±ÕâÖÖ·Ö¸î³É¡°·¢¶¯»ú¡±ºÍ¡°n¡±
+			//å•ä¸ªè¯swordï¼Œå°†â€œå‘åŠ¨æœº/nâ€è¿™ç§åˆ†å‰²æˆâ€œå‘åŠ¨æœºâ€å’Œâ€œnâ€
 			String[] sword = swlist[i].split("/");
 			for(int j=0;j<term.size();j++)
 			{
@@ -114,7 +114,7 @@ public class EntityExtraction {
 				{
 					//System.out.println(sword[0]);
 					entitynum++;
-					sword[0] = "¡¾"+sword[0]+"¡¿";
+					sword[0] = "ã€"+sword[0]+"ã€‘";
 					//System.out.print(sword[0]);
 					
 				}
@@ -151,7 +151,7 @@ public class EntityExtraction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//boolean ss = ee.matchTerm("¶¯Á¦µç³Ø");
+		//boolean ss = ee.matchTerm("åŠ¨åŠ›ç”µæ± ");
 		//System.out.println(ss);
 		System.out.println(new Date());
 	}

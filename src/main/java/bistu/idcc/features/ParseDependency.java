@@ -1,4 +1,4 @@
-package bistu.idcc.features;
+ï»¿package bistu.idcc.features;
 
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.corpus.dependency.CoNll.CoNLLSentence;
@@ -9,8 +9,8 @@ public class ParseDependency {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(HanLP.segment("°ÑÊĞ³¡¾­¼Ã·îĞĞµÄµÈ¼ÛÅÌÊ½ÖÆ¶¯µ¥Ôª½»»»Ô­ÔòÒıÈëµ³µÄÉú»îºÍ¹ú¼Ò»ú¹ØÕşÎñ»î¶¯ÖĞ"));
-		System.out.println(CRFDependencyParser.compute("µç³ØÎÂ¶È¿ØÖÆÄ£¿éÍ¨¹ı´«¸ĞÆ÷²É¼¯µç³ØÄ£¿éµÄ¡¾±¾Ìå¡¿ÎÂ¶È²¢Êä³öĞÅºÅ{¿ØÖÆ}ÀäÈ´·çÉÈ¡¢Ë®±Ã¡¢µç´Å»»Ïò·§¼°¡¾¼ÓÈÈÆ÷¡¿"));
+		System.out.println(HanLP.segment("æŠŠå¸‚åœºç»æµå¥‰è¡Œçš„ç­‰ä»·ç›˜å¼åˆ¶åŠ¨å•å…ƒäº¤æ¢åŸåˆ™å¼•å…¥å…šçš„ç”Ÿæ´»å’Œå›½å®¶æœºå…³æ”¿åŠ¡æ´»åŠ¨ä¸­"));
+		System.out.println(CRFDependencyParser.compute("ç”µæ± æ¸©åº¦æ§åˆ¶æ¨¡å—é€šè¿‡ä¼ æ„Ÿå™¨é‡‡é›†ç”µæ± æ¨¡å—çš„ã€æœ¬ä½“ã€‘æ¸©åº¦å¹¶è¾“å‡ºä¿¡å·{æ§åˆ¶}å†·å´é£æ‰‡ã€æ°´æ³µã€ç”µç£æ¢å‘é˜€åŠã€åŠ çƒ­å™¨ã€‘"));
 	}
 
 }

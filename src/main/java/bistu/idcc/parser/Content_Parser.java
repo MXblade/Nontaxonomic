@@ -1,4 +1,4 @@
-package bistu.idcc.parser;
+ï»¿package bistu.idcc.parser;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,50 +15,50 @@ import com.hankcs.hanlp.seg.common.Term;
 import bistu.idcc.functions.ClearTxt_Path;
 
 /**
- * ¶Ô×¨ÀûÎÄ¼ş½øĞĞ·Ö´Ê²¢´æ´¢ÔÚÎÄ¼ş
+ * å¯¹ä¸“åˆ©æ–‡ä»¶è¿›è¡Œåˆ†è¯å¹¶å­˜å‚¨åœ¨æ–‡ä»¶
  * @parser(String path, String outpath)
- * ¸ø¶¨×¨ÀûÎÄ¼ş¼ĞÂ·¾¶path£¬±éÀú×¨ÀûÎÄ¼ş½øĞĞ·Ö´Ê£¬½«·Ö´Ê½á¹û´æÈëÒ»¸öÎÄ¼şÄÚ£¬ÎÄ¼şÂ·¾¶outpath
+ * ç»™å®šä¸“åˆ©æ–‡ä»¶å¤¹è·¯å¾„pathï¼Œéå†ä¸“åˆ©æ–‡ä»¶è¿›è¡Œåˆ†è¯ï¼Œå°†åˆ†è¯ç»“æœå­˜å…¥ä¸€ä¸ªæ–‡ä»¶å†…ï¼Œæ–‡ä»¶è·¯å¾„outpath
  * @parser_files(String path, String outpath)
- * ¸ø¶¨×¨ÀûÎÄ¼ş¼ĞÂ·¾¶path£¬±éÀú×¨ÀûÎÄ¼ş½øĞĞ·Ö´Ê£¬½«·Ö´Ê½á¹ûÈ¥´ÊĞÔ°´ÎÄ¼ş´æÈëÒ»¸öÎÄ¼ş¼Ğ£¬ÎÄ¼ş¼ĞÂ·¾¶outpath
+ * ç»™å®šä¸“åˆ©æ–‡ä»¶å¤¹è·¯å¾„pathï¼Œéå†ä¸“åˆ©æ–‡ä»¶è¿›è¡Œåˆ†è¯ï¼Œå°†åˆ†è¯ç»“æœå»è¯æ€§æŒ‰æ–‡ä»¶å­˜å…¥ä¸€ä¸ªæ–‡ä»¶å¤¹ï¼Œæ–‡ä»¶å¤¹è·¯å¾„outpath
  * @author Joen
  *
  */
 public class Content_Parser {
 
 	/*
-	 * ¸ø¶¨×¨ÀûÎÄ¼ş¼ĞÂ·¾¶path£¬±éÀú×¨ÀûÎÄ¼ş½øĞĞ·Ö´Ê£¬½«·Ö´Ê½á¹û´æÈëÒ»¸öÎÄ¼şÄÚ£¬ÎÄ¼şÂ·¾¶outpath
+	 * ç»™å®šä¸“åˆ©æ–‡ä»¶å¤¹è·¯å¾„pathï¼Œéå†ä¸“åˆ©æ–‡ä»¶è¿›è¡Œåˆ†è¯ï¼Œå°†åˆ†è¯ç»“æœå­˜å…¥ä¸€ä¸ªæ–‡ä»¶å†…ï¼Œæ–‡ä»¶è·¯å¾„outpath
 	 */
 	public void parser(String path, String outpath)throws IOException{
-		//±éÀúpathÏÂ×¨ÀûÎÄ¼ş
+		//éå†pathä¸‹ä¸“åˆ©æ–‡ä»¶
 		File folder = new File(path);
 		File[] files = folder.listFiles();
-		//Çå¿Õ²¢´´½¨Êä³öÎÄ¼şÂ·¾¶
+		//æ¸…ç©ºå¹¶åˆ›å»ºè¾“å‡ºæ–‡ä»¶è·¯å¾„
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
-		//Êä³öÁ÷
+		//è¾“å‡ºæµ
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
 		
 		for(File f:files){
-			//ÊäÈëÁ÷
+			//è¾“å…¥æµ
 			BufferedReader br = new BufferedReader(new FileReader(f));
-			//¶ÁÈ¡µÚÈıĞĞÄÚÈİ
+			//è¯»å–ç¬¬ä¸‰è¡Œå†…å®¹
 			String temp = null;
 			br.readLine();
 			br.readLine();
 			temp = br.readLine();
 			br.close();
-			//±ÜÃâµÚÈıĞĞÎª¿Õ
+			//é¿å…ç¬¬ä¸‰è¡Œä¸ºç©º
 			if(temp!=null)
 			{
-				//¹ıÂËµôÎŞÓÃ¿Õ¸ñ
+				//è¿‡æ»¤æ‰æ— ç”¨ç©ºæ ¼
 				temp = temp.replace(" ", "");
-/*				if(temp.contains("µçÑ¹Êä³ö¿ØÖÆµçÂ·")){
+/*				if(temp.contains("ç”µå‹è¾“å‡ºæ§åˆ¶ç”µè·¯")){
 					System.out.println(f.getName());
 				}
 */				
-				//¶Ï¾ä
-				String[] templist = temp.split("£¬|¡£|,|£»|;");
-				//½øĞĞ·Ö´Ê£¬²¢Ğ´Èëµ½Êä³öÎÄ¼ş¡£
+				//æ–­å¥
+				String[] templist = temp.split("ï¼Œ|ã€‚|,|ï¼›|;");
+				//è¿›è¡Œåˆ†è¯ï¼Œå¹¶å†™å…¥åˆ°è¾“å‡ºæ–‡ä»¶ã€‚
 				for(String s:templist){
 					if(!s.equals("")){
 						List<Term> slist = HanLP.segment(s);
@@ -75,43 +75,43 @@ public class Content_Parser {
 	}
 	
 	/*
-	 * ¸ø¶¨×¨ÀûÎÄ¼ş¼ĞÂ·¾¶path£¬±éÀú×¨ÀûÎÄ¼ş½øĞĞ·Ö´Ê£¬½«·Ö´Ê½á¹ûÈ¥´ÊĞÔ°´ÎÄ¼ş´æÈëÒ»¸öÎÄ¼ş¼Ğ£¬ÎÄ¼ş¼ĞÂ·¾¶outpath
+	 * ç»™å®šä¸“åˆ©æ–‡ä»¶å¤¹è·¯å¾„pathï¼Œéå†ä¸“åˆ©æ–‡ä»¶è¿›è¡Œåˆ†è¯ï¼Œå°†åˆ†è¯ç»“æœå»è¯æ€§æŒ‰æ–‡ä»¶å­˜å…¥ä¸€ä¸ªæ–‡ä»¶å¤¹ï¼Œæ–‡ä»¶å¤¹è·¯å¾„outpath
 	 */
 	public void parser_files(String path, String outpath) throws IOException{
-		//Çå¿Õ´´½¨Êä³öÎÄ¼ş¼Ğ
+		//æ¸…ç©ºåˆ›å»ºè¾“å‡ºæ–‡ä»¶å¤¹
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.clearpath(outpath);
-		//±éÀú×¨ÀûÎÄ¼ş
+		//éå†ä¸“åˆ©æ–‡ä»¶
 		File folder = new File(path);
 		File[] files = folder.listFiles();
 		for(File f:files){
-			//ÊäÈëÁ÷
+			//è¾“å…¥æµ
 			BufferedReader br = new BufferedReader(new FileReader(f));
-			//¹¹½¨Êä³öÎÄ¼şÂ·¾¶£¬²¢Çå¿Õ´´½¨ÎÄ¼ş
+			//æ„å»ºè¾“å‡ºæ–‡ä»¶è·¯å¾„ï¼Œå¹¶æ¸…ç©ºåˆ›å»ºæ–‡ä»¶
 			String fileoutpt = outpath + "/" + f.getName();
 			clear.cleartxt(fileoutpt);
-			//Êä³öÁ÷
+			//è¾“å‡ºæµ
 			BufferedWriter bw = new BufferedWriter(new FileWriter(fileoutpt));
-			//¶ÁÈ¡µÚÈıĞĞÄÚÈİ
+			//è¯»å–ç¬¬ä¸‰è¡Œå†…å®¹
 			String temp = null;
 			br.readLine();
 			br.readLine();
 			temp = br.readLine();
 			br.close();
-			//ÅĞ¶ÏµÚÈıĞĞÄÚÈİÊÇ·ñÎª¿Õ
+			//åˆ¤æ–­ç¬¬ä¸‰è¡Œå†…å®¹æ˜¯å¦ä¸ºç©º
 			if(temp!=null){
-				//È¥³ıÎŞÓÃ¿Õ¸ñ
+				//å»é™¤æ— ç”¨ç©ºæ ¼
 				temp = temp.replace(" ", "");
-				//¶Ï¾ä
-				String[] templist = temp.split("£¬|¡£|,|£»|;");
-				//·Ö´Ê£¬²¢È¥´ÊĞÔºóĞ´Èë
+				//æ–­å¥
+				String[] templist = temp.split("ï¼Œ|ã€‚|,|ï¼›|;");
+				//åˆ†è¯ï¼Œå¹¶å»è¯æ€§åå†™å…¥
 				for(String s:templist){
 	        		List<Term> segparser = HanLP.segment(s);
 	        		for(Term k:segparser){
-	        			//·Ö´ÊºóµÄ×Ô´ø´ÊĞÔ£¬ÓÉÓÚ²»ĞèÒª´ÊĞÔ£¬Ôò½«´ÊĞÔÉ¾³ı
+	        			//åˆ†è¯åçš„è‡ªå¸¦è¯æ€§ï¼Œç”±äºä¸éœ€è¦è¯æ€§ï¼Œåˆ™å°†è¯æ€§åˆ é™¤
 	        			String st = k.toString();
 	        			String[] stsplit = st.split("/");
-	        			if(stsplit[0] != "¡¢"){
+	        			if(stsplit[0] != "ã€"){
 	            			bw.write(stsplit[0]);
 	            			bw.newLine();
 	         			}

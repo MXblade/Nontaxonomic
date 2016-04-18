@@ -1,4 +1,4 @@
-package bistu.idcc.features;
+ï»¿package bistu.idcc.features;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,20 +8,20 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * »ñÈ¡¸ø¶¨¾ä×ÓµÄurl£¬ÓÃÓÚÖ®ºóÏòltp·şÎñÆ÷ÇëÇó¾ä·¨·ÖÎö
+ * è·å–ç»™å®šå¥å­çš„urlï¼Œç”¨äºä¹‹åå‘ltpæœåŠ¡å™¨è¯·æ±‚å¥æ³•åˆ†æ
  * @author Joen
  *
  */
 public class Get_LTP_URL {
 
 	public URL g_url(String text)throws IOException{
-		//LTPµÄapi_key
+		//LTPçš„api_key
 		String api_key = "v6D3S052lxaSTnrBmiGyJSSrXv6qQxxyXIZMngTY";
-        //patternÑ¡ÔñµÄ·ÖÎöÄ£Ê½£¬ws(·Ö´Ê)£¬pos(´ÊĞÔ±ê×¢)£¬ner(ÃüÃûÊµÌåÊ¶±ğ)£¬dp(ÒÀ´æ¾ä·¨·ÖÎö)£¬sdp(ÓïÒåÒÀ´æ·ÖÎö)£¬srl(ÓïÒå½ÇÉ«±ê×¢),all(È«²¿ÈÎÎñ)
+        //patterné€‰æ‹©çš„åˆ†ææ¨¡å¼ï¼Œws(åˆ†è¯)ï¼Œpos(è¯æ€§æ ‡æ³¨)ï¼Œner(å‘½åå®ä½“è¯†åˆ«)ï¼Œdp(ä¾å­˜å¥æ³•åˆ†æ)ï¼Œsdp(è¯­ä¹‰ä¾å­˜åˆ†æ)ï¼Œsrl(è¯­ä¹‰è§’è‰²æ ‡æ³¨),all(å…¨éƒ¨ä»»åŠ¡)
 		String pattern = "dp";
-		//formatÖ¸¶¨½á¹û¸ñÊ½ÀàĞÍ£¬xml(XML¸ñÊ½)£¬json(JSON¸ñÊ½)£¬conll(CONLL¸ñÊ½)£¬plain(¼ò½àÎÄ±¾¸ñÊ½)
+		//formatæŒ‡å®šç»“æœæ ¼å¼ç±»å‹ï¼Œxml(XMLæ ¼å¼)ï¼Œjson(JSONæ ¼å¼)ï¼Œconll(CONLLæ ¼å¼)ï¼Œplain(ç®€æ´æ–‡æœ¬æ ¼å¼)
         String format  = "xml";
-        //½«ÎÄ±¾×ª»¯Îªutf-8¸ñÊ½£¬ltp´¦ÀíÖ»ÄÜ´¦Àí¸Ã¸ñÊ½ÎÄ±¾
+        //å°†æ–‡æœ¬è½¬åŒ–ä¸ºutf-8æ ¼å¼ï¼Œltpå¤„ç†åªèƒ½å¤„ç†è¯¥æ ¼å¼æ–‡æœ¬
         text = URLEncoder.encode(text, "UTF-8");
         
         URL url     = new URL("http://api.ltp-cloud.com/analysis/?"

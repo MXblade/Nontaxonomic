@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,26 +8,26 @@ import java.io.IOException;
 
 import bistu.idcc.functions.ClearTxt_Path;
 /**
- * ¹ıÂËÁ½¸öÃû´Ê¼äÃ»ÓĞ¶¯´ÊµÄ¾ä×Ó¡£
+ * è¿‡æ»¤ä¸¤ä¸ªåè¯é—´æ²¡æœ‰åŠ¨è¯çš„å¥å­ã€‚
  * @filter_nonnvn(String path, String outpath)
- * path¸ø¶¨µÄ·Ö´ÊºóÎÄ¼şÂ·¾¶
- * outpath ¹ıÂËºóµÄÊä³öÎÄ¼şÂ·¾¶¡£
+ * pathç»™å®šçš„åˆ†è¯åæ–‡ä»¶è·¯å¾„
+ * outpath è¿‡æ»¤åçš„è¾“å‡ºæ–‡ä»¶è·¯å¾„ã€‚
  * @author Joen
  *
  */
 
 public class Filter_NonNVN {
 	public void filter_nonnvn(String path, String outpath)throws IOException{
-		//ÊäÈëÁ÷£¬Çå¿Õ´´½¨Êä³öÎÄ¼ş£¬Êä³öÁ÷
+		//è¾“å…¥æµï¼Œæ¸…ç©ºåˆ›å»ºè¾“å‡ºæ–‡ä»¶ï¼Œè¾“å‡ºæµ
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
 		
-		//ÒÔ¡°¡¾¡±·ÖÀë£¬È¥³ı·ÖÀëºóµÄÊ×Î²StringµÄ£û£ı£¬²¢ÖØĞÂÁ¬½Ó£¬ÅĞ¶ÏÕû¸ö¾ä×ÓÈô´æÔÚ£û£¬ÔòÊä³ö¸Ã¾ä×Ó
+		//ä»¥â€œã€â€åˆ†ç¦»ï¼Œå»é™¤åˆ†ç¦»åçš„é¦–å°¾Stringçš„ï½›ï½ï¼Œå¹¶é‡æ–°è¿æ¥ï¼Œåˆ¤æ–­æ•´ä¸ªå¥å­è‹¥å­˜åœ¨ï½›ï¼Œåˆ™è¾“å‡ºè¯¥å¥å­
 		String temp = null;
 		while((temp = br.readLine()) != null){
-			String[] templist = temp.split("¡¾");
+			String[] templist = temp.split("ã€");
 			templist[0] = templist[0].replace("{", "");
 			templist[0] = templist[0].replace("}", "" );
 			templist[templist.length-1] = templist[templist.length-1].replace("{", "");
@@ -35,7 +35,7 @@ public class Filter_NonNVN {
 			String utemplist = "";
 			utemplist = templist[0];
 			for(int i = 1; i < templist.length; i++){
-				utemplist = utemplist +"¡¾" + templist[i];
+				utemplist = utemplist +"ã€" + templist[i];
 			}
 			if(utemplist.contains("{"))
 			{

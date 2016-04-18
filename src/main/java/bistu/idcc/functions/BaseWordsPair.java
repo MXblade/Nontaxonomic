@@ -1,4 +1,4 @@
-package bistu.idcc.functions;
+﻿package bistu.idcc.functions;
 
 public class BaseWordsPair {
 	public static void main(String args[]){

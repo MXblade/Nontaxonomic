@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,58 +10,58 @@ import java.util.Map.Entry;
 import com.hankcs.hanlp.dependency.nnparser.util.math;
 
 /**
- * ¸ø¶¨N-V-N×éºÏ£¬¼ÆËãN-NÔÚËùÓĞÎÄµµ³öÏÖµÄ´ÎÊı£¬ÒÔ¼°N-V-N³öÏÖµÄ´ÎÊı¡£
- * Í¨¹ı¹«Ê½¸ø³öNVNµÄÎÄµµÆµÂÊ ((NVN)/(NN))
+ * ç»™å®šN-V-Nç»„åˆï¼Œè®¡ç®—N-Nåœ¨æ‰€æœ‰æ–‡æ¡£å‡ºç°çš„æ¬¡æ•°ï¼Œä»¥åŠN-V-Nå‡ºç°çš„æ¬¡æ•°ã€‚
+ * é€šè¿‡å…¬å¼ç»™å‡ºNVNçš„æ–‡æ¡£é¢‘ç‡ ((NVN)/(NN))
  * @f_nvn
- * nvnµÄÎÄµµÆµÂÊ
+ * nvnçš„æ–‡æ¡£é¢‘ç‡
  * @num_nn
- * n-nÎÄµµ³öÏÖµÄ´ÎÊı
+ * n-næ–‡æ¡£å‡ºç°çš„æ¬¡æ•°
  * @num_nvn
- * n-v-nÎÄµµ³öÏÖµÄ´ÎÊı
+ * n-v-næ–‡æ¡£å‡ºç°çš„æ¬¡æ•°
  * @get_f_nvn(String n1, String v, String n2, HashMap<String, HashSet<String>> hm)
- * ¼ÆËãn1-v-n2ÎÄµµÆµÂÊ£¬Ğè¸ø×¨ÀûÎÄ¼ş¼ĞµÄhashmap£¬·µ»Ødouble
+ * è®¡ç®—n1-v-n2æ–‡æ¡£é¢‘ç‡ï¼Œéœ€ç»™ä¸“åˆ©æ–‡ä»¶å¤¹çš„hashmapï¼Œè¿”å›double
  * @g_num_nn(String n1, String n2, HashMap<String, HashSet<String>> hm)
- * ¼ÆËãn1-n2ÎÄµµ³öÏÖµÄ´ÎÊı£¬Ğè¸ø×¨ÀûÎÄ¼ş¼ĞµÄhashmap£¬·µ»Ødouble
+ * è®¡ç®—n1-n2æ–‡æ¡£å‡ºç°çš„æ¬¡æ•°ï¼Œéœ€ç»™ä¸“åˆ©æ–‡ä»¶å¤¹çš„hashmapï¼Œè¿”å›double
  * @g_num_nvn(String n1, String v, String n2, HashMap<String, HashSet<String>> hm)
- * ¼ÆËãn1-v-n2ÎÄµµ³öÏÖµÄ´ÎÊı£¬Ğè¸ø×¨ÀûÎÄ¼ş¼ĞµÄhashmap£¬·µ»Ødouble
+ * è®¡ç®—n1-v-n2æ–‡æ¡£å‡ºç°çš„æ¬¡æ•°ï¼Œéœ€ç»™ä¸“åˆ©æ–‡ä»¶å¤¹çš„hashmapï¼Œè¿”å›double
  * @author Joen
  *
  */
 public class IDF_NVN {
 	
-	//nvnµÄÎÄµµÆµÂÊ
+	//nvnçš„æ–‡æ¡£é¢‘ç‡
 	double f_nvn = 0.0;
-	//nnµÄ³öÏÖÎÄµµ´ÎÊı
+	//nnçš„å‡ºç°æ–‡æ¡£æ¬¡æ•°
 	double num_nn = 0.0;
-	//nvnµÄ³öÏÖÎÄµµ´ÎÊı
+	//nvnçš„å‡ºç°æ–‡æ¡£æ¬¡æ•°
 	double num_nvn = 0.0;
 	
 	/*
-	 * ¼ÆËãf_nvn£¬·µ»Ødouble£¬ Ğè¸ø¶¨n1,v,n2,HashMap
+	 * è®¡ç®—f_nvnï¼Œè¿”å›doubleï¼Œ éœ€ç»™å®šn1,v,n2,HashMap
 	 */
 	public double get_f_nvn(String n1, String v, String n2, HashMap<String, HashSet<String>> hm){
-		//Í³¼Ænn³öÏÖÎÄµµ´ÎÊı
+		//ç»Ÿè®¡nnå‡ºç°æ–‡æ¡£æ¬¡æ•°
 		num_nn = g_num_nn(n1,n2,hm);
-		//Í³¼Ænvn³öÏÖÎÄµµ´ÎÊı
+		//ç»Ÿè®¡nvnå‡ºç°æ–‡æ¡£æ¬¡æ•°
 		num_nvn = g_num_nvn(n1,v,n2,hm);
-		//¼ÆËã¹«Ê½
+		//è®¡ç®—å…¬å¼
 		f_nvn = (num_nvn/num_nn);
 		return f_nvn;
 		
 	}
 	
 	/*
-	 * Í³¼Æn1£¬n2¹²Í¬³öÏÖµÄÎÄµµ´ÎÊı¡£
+	 * ç»Ÿè®¡n1ï¼Œn2å…±åŒå‡ºç°çš„æ–‡æ¡£æ¬¡æ•°ã€‚
 	 */
 	public double g_num_nn(String n1, String n2, HashMap<String, HashSet<String>> hm){
 		double num = 0.0;
-		//¶Ô¸ø¶¨µÄ×¨ÀûÎÄ¼ş¼ĞµÄhashmap½øĞĞ±éÀú
+		//å¯¹ç»™å®šçš„ä¸“åˆ©æ–‡ä»¶å¤¹çš„hashmapè¿›è¡Œéå†
 		Iterator<Entry<String, HashSet<String>>> itera = hm.entrySet().iterator();
 		while(itera.hasNext()){
-			//±éÀúµÄ¶ÔÏóÊÇ×¨ÀûÃû+¸Ã×¨ÀûËùÓĞ´Ê¹¹³ÉµÄSet
+			//éå†çš„å¯¹è±¡æ˜¯ä¸“åˆ©å+è¯¥ä¸“åˆ©æ‰€æœ‰è¯æ„æˆçš„Set
 			Entry<String, HashSet<String>> entry =  itera.next();
 			HashSet<String> value = entry.getValue();
-			//¶ÔSet½øĞĞ²éÑ¯
+			//å¯¹Setè¿›è¡ŒæŸ¥è¯¢
 			if(value.contains(n1)&&value.contains(n2)){
 				num = num + 1.0;
 			}
@@ -70,7 +70,7 @@ public class IDF_NVN {
 	}
 	
 	/*
-	 * Í³¼Æn1£¬v,n2¹²Í¬³öÏÖµÄÎÄµµ´ÎÊı¡£
+	 * ç»Ÿè®¡n1ï¼Œv,n2å…±åŒå‡ºç°çš„æ–‡æ¡£æ¬¡æ•°ã€‚
 	 */
 	public double g_num_nvn(String n1, String v, String n2, HashMap<String, HashSet<String>> hm){
 		double num = 0.0;
@@ -89,7 +89,7 @@ public class IDF_NVN {
 		// TODO Auto-generated method stub
 		HashMap_Patents hmp = new HashMap_Patents("sourcefile/afparser");
 		IDF_NvN nvn = new IDF_NvN();
-		nvn.get_f_nvn("µç¶¯³µ", "»ì", "µç³Ø", hmp.hm_p);
+		nvn.get_f_nvn("ç”µåŠ¨è½¦", "æ··", "ç”µæ± ", hmp.hm_p);
 		System.out.println(nvn.num_nn);
 		System.out.println(nvn.num_nvn);
 		System.out.println(nvn.f_nvn);

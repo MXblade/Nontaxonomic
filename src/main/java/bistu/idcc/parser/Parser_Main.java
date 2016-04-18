@@ -1,4 +1,4 @@
-package bistu.idcc.parser;
+﻿package bistu.idcc.parser;
 
 import java.io.IOException;
 import java.util.Date;

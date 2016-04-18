@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.IOException;
 
@@ -6,11 +6,11 @@ public class Candidate_Main {
 
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-		//¶Ô±ê¼ÇºÃµÄ×¨Àû¾ä×Ó½øĞĞÎŞnvn´Ê×é¹ıÂË¡£
+		//å¯¹æ ‡è®°å¥½çš„ä¸“åˆ©å¥å­è¿›è¡Œæ— nvnè¯ç»„è¿‡æ»¤ã€‚
 		Filter_NonNVN filter = new Filter_NonNVN();
 		filter.filter_nonnvn("sourcefile/candidate/TagParser.txt", "sourcefile/candidate/after_filter.txt");
 		
-		//Ñ¡È¡idfÖµ×î¸ßµÄnvn´Ê×é£¬²¢Ğ´ÈëÎÄ¼ş¡£
+		//é€‰å–idfå€¼æœ€é«˜çš„nvnè¯ç»„ï¼Œå¹¶å†™å…¥æ–‡ä»¶ã€‚
 		Candidate_Set set = new Candidate_Set();
 		set.candset("sourcefile/candidate/after_filter.txt", "sourcefile/candidate/candidate_set.txt", "sourcefile/afparser");
 	}

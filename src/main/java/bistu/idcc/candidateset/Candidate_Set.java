@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,47 +11,47 @@ import java.util.HashSet;
 import bistu.idcc.functions.ClearTxt_Path;
 
 /**
- * ¸ø¶¨ÎÄ¼ş(ĞèÒÑ¹ıÂËµô²»°üº¬NVN¸ñÊ½µÄ¾ä×Ó)Â·¾¶,Êä³öÎÄ¼şÂ·¾¶,·Ö´ÊºóÎ´´ø´ÊĞÔµÄ×¨ÀûÎÄ¼ş¼Ğ¡£
- * ¶ÔÃ¿Ò»¾äÖĞµÄºòÑ¡´Ê×éNVN½øĞĞ´¦Àí£¬ÌôÑ¡³öidfÖµ×î¸ßµÄÒ»×éNVN×÷Îª¸Ã¾äµÄºòÑ¡´Ê×é¡£
+ * ç»™å®šæ–‡ä»¶(éœ€å·²è¿‡æ»¤æ‰ä¸åŒ…å«NVNæ ¼å¼çš„å¥å­)è·¯å¾„,è¾“å‡ºæ–‡ä»¶è·¯å¾„,åˆ†è¯åæœªå¸¦è¯æ€§çš„ä¸“åˆ©æ–‡ä»¶å¤¹ã€‚
+ * å¯¹æ¯ä¸€å¥ä¸­çš„å€™é€‰è¯ç»„NVNè¿›è¡Œå¤„ç†ï¼ŒæŒ‘é€‰å‡ºidfå€¼æœ€é«˜çš„ä¸€ç»„NVNä½œä¸ºè¯¥å¥çš„å€™é€‰è¯ç»„ã€‚
  * @candset(String path, String outpath, String content_folder_path)
- * ±éÀúÎÄ¼ş£¬¶ÔÃ¿Ò»¾äÑ¡³ö×î¼ÑnvnĞ´ÈëÎÄ¼ş
+ * éå†æ–‡ä»¶ï¼Œå¯¹æ¯ä¸€å¥é€‰å‡ºæœ€ä½³nvnå†™å…¥æ–‡ä»¶
  * @ArrayList<String> phraseset(String line)
- * ¸ø¶¨¾ä×Ó£¬±éÀúËùÓĞµÄnvn×÷ÎªºòÑ¡¼¯£¬ÒÔarraylistĞÎÊ½·µ»Ø
+ * ç»™å®šå¥å­ï¼Œéå†æ‰€æœ‰çš„nvnä½œä¸ºå€™é€‰é›†ï¼Œä»¥arraylistå½¢å¼è¿”å›
  * @String replace_nvn (String line, String phrase)
- * ¸ø¶¨Ò»¸ö×Ö·û´®ºÍËã³öµÄ´Ê¶Ô£¬¶Ô×Ö·û´®³ı¸Ã´Ê¶ÔÍâ½øĞĞÇå³ı·ûºÅ²Ù×÷£¬²¢·µ»Ø´¦ÀíºóµÄ×Ö·û´®
+ * ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸²å’Œç®—å‡ºçš„è¯å¯¹ï¼Œå¯¹å­—ç¬¦ä¸²é™¤è¯¥è¯å¯¹å¤–è¿›è¡Œæ¸…é™¤ç¬¦å·æ“ä½œï¼Œå¹¶è¿”å›å¤„ç†åçš„å­—ç¬¦ä¸²
  * @author Joen
  *
  */
 public class Candidate_Set {
 
 	/*
-	 * ¶Ô¸ø¶¨µÄpathÎÄ¼ş£¬½øĞĞnvnÌôÑ¡£¬²¢Ğ´Èëoutpath£¬content_folder_pathÓÃÀ´¹¹½¨×¨Àûhashmap
+	 * å¯¹ç»™å®šçš„pathæ–‡ä»¶ï¼Œè¿›è¡ŒnvnæŒ‘é€‰ï¼Œå¹¶å†™å…¥outpathï¼Œcontent_folder_pathç”¨æ¥æ„å»ºä¸“åˆ©hashmap
 	 */
 	public void candset(String path, String outpath, String content_folder_path)throws IOException{
-		//Çå¿Õ´´½¨outpath
+		//æ¸…ç©ºåˆ›å»ºoutpath
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
-		//ÊäÈëÊä³öÁ÷
+		//è¾“å…¥è¾“å‡ºæµ
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
 		
-		//´´½¨HashMap_Patents¶ÔÏó£¬¹¹½¨×¨Àûhashmap
+		//åˆ›å»ºHashMap_Patentså¯¹è±¡ï¼Œæ„å»ºä¸“åˆ©hashmap
 		HashMap_Patents hmp = new HashMap_Patents(content_folder_path);
 		
-		//´´½¨IDF_NVN¶ÔÏó£¬¼ÆËãidfÖµ
+		//åˆ›å»ºIDF_NVNå¯¹è±¡ï¼Œè®¡ç®—idfå€¼
 		IDF_NVN idf = new IDF_NVN();
 		
-		//¶ÁÈ¡ÎÄ¼ş
+		//è¯»å–æ–‡ä»¶
 		String temp = null;
 		int num = 0;
 		while((temp = br.readLine()) != null){
 			System.out.println(num++);
-			//¶Ôtemp£¬µ÷ÓÃphraseset£¬±éÀúËùÓĞµÄnvn¡£
+			//å¯¹tempï¼Œè°ƒç”¨phrasesetï¼Œéå†æ‰€æœ‰çš„nvnã€‚
 			ArrayList<String> tempset = phraseset(temp);
-			//ÓÃÓÚÅĞ¶ÏidfµÄ×î´óÖµ
+			//ç”¨äºåˆ¤æ–­idfçš„æœ€å¤§å€¼
 			double max = 0.0 ;
 			String maxpharser = "";
-			//¶ÔµÃµ½µÄnvnºòÑ¡¼¯½øĞĞ±éÀú£¬µÃµ½idf×î´óµÄnvn
+			//å¯¹å¾—åˆ°çš„nvnå€™é€‰é›†è¿›è¡Œéå†ï¼Œå¾—åˆ°idfæœ€å¤§çš„nvn
 			for(String s : tempset){
 				String[] pharse = s.split(" ");
 				double phidf = idf.get_f_nvn(pharse[0],pharse[1],pharse[2],hmp.hm_p);
@@ -60,8 +60,8 @@ public class Candidate_Set {
 					maxpharser = s;
 				}
 			}
-			//ÈôµÃµ½µÄnvn²»Îª¿Õ£¬Ôòµ÷ÓÃreplace_nvn£¬½øĞĞÇå³ı³ıÁËnvnÖ®ÍâËùÓĞµÄÌØÊâ·ûºÅ£¬²¢Ğ´Èëoutpath
-			//Èô¸Ã¾ä×ÓÖĞ´æÔÚnvn£¬µ«ÊÇn1ºÍn2ÊÇÏàÍ¬µÄ£¬ÔòµÃµ½µÄmaxpharserÎª¿Õ¡£
+			//è‹¥å¾—åˆ°çš„nvnä¸ä¸ºç©ºï¼Œåˆ™è°ƒç”¨replace_nvnï¼Œè¿›è¡Œæ¸…é™¤é™¤äº†nvnä¹‹å¤–æ‰€æœ‰çš„ç‰¹æ®Šç¬¦å·ï¼Œå¹¶å†™å…¥outpath
+			//è‹¥è¯¥å¥å­ä¸­å­˜åœ¨nvnï¼Œä½†æ˜¯n1å’Œn2æ˜¯ç›¸åŒçš„ï¼Œåˆ™å¾—åˆ°çš„maxpharserä¸ºç©ºã€‚
 			if(maxpharser != "")
 			{
 				//System.out.println(maxpharser);
@@ -76,27 +76,27 @@ public class Candidate_Set {
 	}
 	
 	/*
-	 * ¸ø¶¨Ò»¸ö×Ö·û´®£¬¶Ô¸Ã×Ö·û´®½øĞĞÆ¥ÅäNVN´Ê×é²Ù×÷£¬°Ñ·ûºÏNVN¸ñÊ½µÄËùÓĞ´Ê×éÒÔ¡°N V N Nloc Vloc Nloc¡±´æÈëarraylist
+	 * ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå¯¹è¯¥å­—ç¬¦ä¸²è¿›è¡ŒåŒ¹é…NVNè¯ç»„æ“ä½œï¼ŒæŠŠç¬¦åˆNVNæ ¼å¼çš„æ‰€æœ‰è¯ç»„ä»¥â€œN V N Nloc Vloc Nlocâ€å­˜å…¥arraylist
 	 */
 	public ArrayList<String> phraseset(String line){
-		//¹¹½¨arraylistÓÃÓÚ´æ´¢´Ê×é
+		//æ„å»ºarraylistç”¨äºå­˜å‚¨è¯ç»„
 		ArrayList<String> phset = new ArrayList<String>();
-		//Í³¼Æ¡°¡¾¡±µÄ¸öÊı
+		//ç»Ÿè®¡â€œã€â€çš„ä¸ªæ•°
 		int booksym = 0;
-		//Í³¼Æ¡°{¡±µÄ¸öÊı
+		//ç»Ÿè®¡â€œ{â€çš„ä¸ªæ•°
 		int bracessym = 0;
-		booksym = line.split("¡¾").length - 1;
+		booksym = line.split("ã€").length - 1;
 		bracessym = line.split("\\{").length - 1;
-		//¹¹½¨¶şÎ¬Êı×éntermºÍvtermÓÃÓÚ´æ´¢µÃµ½µÄÃû´ÊºÍ¶¯´Ê£¬ÒÔ¼°¶ÔÓ¦µÄÎ»ÖÃ¡£
+		//æ„å»ºäºŒç»´æ•°ç»„ntermå’Œvtermç”¨äºå­˜å‚¨å¾—åˆ°çš„åè¯å’ŒåŠ¨è¯ï¼Œä»¥åŠå¯¹åº”çš„ä½ç½®ã€‚
 		String[][] nterm = new String[booksym][2];
 		String[][] vterm = new String[bracessym][2];
-		//biºÍei±íÊ¾Ò»¸ö´ÊµÄ¿ªÊ¼Î»ÖÃºÍ½áÊøÎ»ÖÃ£¬ÓÃÓÚ»ñÈ¡ÌØÊâ×Ö·ûÖĞµÄ´Ê¡£
+		//biå’Œeiè¡¨ç¤ºä¸€ä¸ªè¯çš„å¼€å§‹ä½ç½®å’Œç»“æŸä½ç½®ï¼Œç”¨äºè·å–ç‰¹æ®Šå­—ç¬¦ä¸­çš„è¯ã€‚
 		int bi = 0;
 		int ei = 0;
-		//»ñÈ¡lineÖĞÃû´ÊÒÔ¼°Ãû´ÊµÄÎ»ÖÃ£¬Ãû´Ê´ænterm[i][0],Î»ÖÃ´ænterm[i][1]
+		//è·å–lineä¸­åè¯ä»¥åŠåè¯çš„ä½ç½®ï¼Œåè¯å­˜nterm[i][0],ä½ç½®å­˜nterm[i][1]
 		for(int i = 0; i < booksym; i++){
-			bi = line.indexOf("¡¾",bi);
-			ei = line.indexOf("¡¿",ei);
+			bi = line.indexOf("ã€",bi);
+			ei = line.indexOf("ã€‘",ei);
 			bi++;
 			String term = line.substring(bi,ei);
 			String loc = String.valueOf(bi);
@@ -105,7 +105,7 @@ public class Candidate_Set {
 			ei++;
 			
 		}
-		//»ñÈ¡lineÖĞ¶¯´ÊÒÔ¼°¶¯´ÊµÄÎ»ÖÃ£¬¶¯´Ê´ævterm[i][0],Î»ÖÃ´ævterm[i][1]
+		//è·å–lineä¸­åŠ¨è¯ä»¥åŠåŠ¨è¯çš„ä½ç½®ï¼ŒåŠ¨è¯å­˜vterm[i][0],ä½ç½®å­˜vterm[i][1]
 		bi = ei = 0;
 		for(int i = 0; i< bracessym; i++){
 			bi = line.indexOf("{",bi);
@@ -119,8 +119,8 @@ public class Candidate_Set {
 			
 		}
 		
-		//¶ÔÁ½¸öÊı×é½øĞĞ±éÀú£¬Èô¶¯´ÊÎ»ÖÃÔÚÁ½¸öÃû´ÊÖ®¼ä£¬Ôò½«ÈıÕßÒÔ¼°Î»ÖÃ´æÈëarraylist
-		//¸ñÊ½n1 v n2 n1loc vloc n2loc
+		//å¯¹ä¸¤ä¸ªæ•°ç»„è¿›è¡Œéå†ï¼Œè‹¥åŠ¨è¯ä½ç½®åœ¨ä¸¤ä¸ªåè¯ä¹‹é—´ï¼Œåˆ™å°†ä¸‰è€…ä»¥åŠä½ç½®å­˜å…¥arraylist
+		//æ ¼å¼n1 v n2 n1loc vloc n2loc
 		for(int i = 0; i < nterm.length -1; i++){
 			for(int j = i + 1; j < nterm.length; j++){
 				for(int m = 0; m < vterm.length; m++){
@@ -145,10 +145,10 @@ public class Candidate_Set {
 	}
 	
 	/*
-	 * ¸ø¶¨Ò»¸ö×Ö·û´®ºÍËã³öµÄ´Ê¶Ô£¬¶Ô×Ö·û´®³ı¸Ã´Ê¶ÔÍâ½øĞĞÇå³ı·ûºÅ²Ù×÷£¬²¢·µ»Ø´¦ÀíºóµÄ×Ö·û´®
+	 * ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸²å’Œç®—å‡ºçš„è¯å¯¹ï¼Œå¯¹å­—ç¬¦ä¸²é™¤è¯¥è¯å¯¹å¤–è¿›è¡Œæ¸…é™¤ç¬¦å·æ“ä½œï¼Œå¹¶è¿”å›å¤„ç†åçš„å­—ç¬¦ä¸²
 	 */
 	public String replace_nvn (String line, String phrase){
-		//¶Ô¸ø¶¨µÄ´Ê×é½øĞĞ·Ö¸î£¬»áµÃµ½Áù¸ö×Ö·û´®
+		//å¯¹ç»™å®šçš„è¯ç»„è¿›è¡Œåˆ†å‰²ï¼Œä¼šå¾—åˆ°å…­ä¸ªå­—ç¬¦ä¸²
 		String[] phraselist = phrase.split(" ");
 		String n1 = phraselist[0];
 		String v = phraselist[1];
@@ -157,20 +157,20 @@ public class Candidate_Set {
 		int v_index = Integer.parseInt(phraselist[4]);
 		int n2_index = Integer.parseInt(phraselist[5]);
 		
-		//½«line°´ÕÕn1£¬v£¬n2½øĞĞ·Ö¸îµÃµ½4¸ö×Ö·û´®£¬
+		//å°†lineæŒ‰ç…§n1ï¼Œvï¼Œn2è¿›è¡Œåˆ†å‰²å¾—åˆ°4ä¸ªå­—ç¬¦ä¸²ï¼Œ
 		String s1 = line.substring(0, n1_index);
 		String s2 = line.substring(n1_index + n1.length(), v_index);
 		String s3 = line.substring(v_index + v.length(), n2_index);
 		String s4 = line.substring(n2_index + n2.length(), line.length());
 		
-		//½øĞĞÌØÊâ·ûºÅÇå³ı
-		s1 = s1.replaceAll("\\{|\\}|¡¾|¡¿", "");
-		s2 = s2.replaceAll("\\{|\\}|¡¾|¡¿", "");
-		s3 = s3.replaceAll("\\{|\\}|¡¾|¡¿", "");
-		s4 = s4.replaceAll("\\{|\\}|¡¾|¡¿", "");
+		//è¿›è¡Œç‰¹æ®Šç¬¦å·æ¸…é™¤
+		s1 = s1.replaceAll("\\{|\\}|ã€|ã€‘", "");
+		s2 = s2.replaceAll("\\{|\\}|ã€|ã€‘", "");
+		s3 = s3.replaceAll("\\{|\\}|ã€|ã€‘", "");
+		s4 = s4.replaceAll("\\{|\\}|ã€|ã€‘", "");
 		
-		//Á¬½Ó²¢·µ»Ø
-		String after_line = s1+"¡¾" + n1 + "¡¿" + s2 + "{" + v + "}" + s3 + "¡¾" + n2 + "¡¿" +s4;
+		//è¿æ¥å¹¶è¿”å›
+		String after_line = s1+"ã€" + n1 + "ã€‘" + s2 + "{" + v + "}" + s3 + "ã€" + n2 + "ã€‘" +s4;
 		return after_line;
 	}
 	
@@ -178,7 +178,7 @@ public class Candidate_Set {
 		// TODO Auto-generated method stub
 		Candidate_Set idf = new Candidate_Set();
 		idf.candset("sourcefile/after_filter.txt", "sourcefile/candidate_set.txt");
-		//idf.phraseset("¡¾µç³Ø¡¿ÎÂ¶È{¿ØÖÆ}Ä£¿éÍ¨¹ı¡¾´«¸ĞÆ÷¡¿{²É¼¯}¡¾µç³Ø¡¿Ä£¿éµÄ¡¾±¾Ìå¡¿ÎÂ¶È²¢{Êä³ö}ĞÅºÅ{¿ØÖÆ}ÀäÈ´¡¾·çÉÈ¡¿¡¢Ë®±Ã¡¢µç´Å»»Ïò·§¼°¡¾¼ÓÈÈÆ÷¡¿");
+		//idf.phraseset("ã€ç”µæ± ã€‘æ¸©åº¦{æ§åˆ¶}æ¨¡å—é€šè¿‡ã€ä¼ æ„Ÿå™¨ã€‘{é‡‡é›†}ã€ç”µæ± ã€‘æ¨¡å—çš„ã€æœ¬ä½“ã€‘æ¸©åº¦å¹¶{è¾“å‡º}ä¿¡å·{æ§åˆ¶}å†·å´ã€é£æ‰‡ã€‘ã€æ°´æ³µã€ç”µç£æ¢å‘é˜€åŠã€åŠ çƒ­å™¨ã€‘");
 	}
 */
 }

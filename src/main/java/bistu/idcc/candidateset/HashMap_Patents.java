@@ -1,4 +1,4 @@
-package bistu.idcc.candidateset;
+ï»¿package bistu.idcc.candidateset;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,32 +15,32 @@ import java.util.Map.Entry;
 import bistu.idcc.functions.ClearTxt_Path;
 
 /**
- * ¹¹½¨Ã¿¸ö×¨ÀûµÄHashSet£¬²¢½«ËùÓĞ×¨Àû¹¹½¨³ÉÒ»¸öHashMap,ÓÃÓÚÍ³¼Æ´ÊÔÚ³öÏÖµÄÎÄµµÊı
+ * æ„å»ºæ¯ä¸ªä¸“åˆ©çš„HashSetï¼Œå¹¶å°†æ‰€æœ‰ä¸“åˆ©æ„å»ºæˆä¸€ä¸ªHashMap,ç”¨äºç»Ÿè®¡è¯åœ¨å‡ºç°çš„æ–‡æ¡£æ•°
  * @HashMap_Patents(String path)
- * ¹¹Ôìº¯Êı£¬¸ø¶¨ÎÄ¼ş¼ĞÂ·¾¶¡£
+ * æ„é€ å‡½æ•°ï¼Œç»™å®šæ–‡ä»¶å¤¹è·¯å¾„ã€‚
  * @write(String path)
- * ½«HashMap hm_pĞ´Èë¸ø¶¨µÄÎÄ¼şpath
+ * å°†HashMap hm_på†™å…¥ç»™å®šçš„æ–‡ä»¶path
  * @author Joen
  *
  */
 
 public class HashMap_Patents {
 
-	//¹¹½¨HashMap<String, HashSet<String>>
+	//æ„å»ºHashMap<String, HashSet<String>>
 	HashMap<String, HashSet<String>> hm_p = new HashMap<String, HashSet<String>>();
 	
 	/*
-	 * ¸ø¶¨×¨ÀûÎÄ¼ş¼ĞÂ·¾¶folderpath£¬½øĞĞhashmapµÄ¹¹½¨
+	 * ç»™å®šä¸“åˆ©æ–‡ä»¶å¤¹è·¯å¾„folderpathï¼Œè¿›è¡Œhashmapçš„æ„å»º
 	 */
 	public HashMap_Patents(String folderpath) throws IOException {
-		//±éÀúfolderpathÏÂµÄËùÓĞÎÄ¼ş
+		//éå†folderpathä¸‹çš„æ‰€æœ‰æ–‡ä»¶
 		File folder = new File(folderpath);
 		File[] files = folder.listFiles();
 		for(File f: files){
-			//¹¹½¨ÊäÈëÁ÷
+			//æ„å»ºè¾“å…¥æµ
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			String filename = f.getName();
-			//¹¹½¨Ã¿Æ¬×¨ÀûµÄhashset
+			//æ„å»ºæ¯ç‰‡ä¸“åˆ©çš„hashset
 			HashSet<String> fileset = new HashSet<String>();
 			String temp = null;
 			while((temp = br.readLine()) != null){
@@ -54,22 +54,22 @@ public class HashMap_Patents {
 	}
 	
 	/*
-	 * ½«¹¹½¨µÄHashMapĞ´ÈëÎÄ¼ş
+	 * å°†æ„å»ºçš„HashMapå†™å…¥æ–‡ä»¶
 	 */
 	public void write(String outpath) throws IOException{
-		//Çå¿Õ´´½¨ĞÂÎÄ¼ş
+		//æ¸…ç©ºåˆ›å»ºæ–°æ–‡ä»¶
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
-		//Êä³öÁ÷
+		//è¾“å‡ºæµ
 		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
-		//±éÀúhashmap hm_p
+		//éå†hashmap hm_p
 		Iterator ite = hm_p.entrySet().iterator();
 		while(ite.hasNext()){
 			Map.Entry entry = (Map.Entry) ite.next();
 			Object key = entry.getKey();
 			HashSet value = (HashSet) entry.getValue();
 			bw.write(key.toString());
-			//¶ÔhashmapÖĞµÄhashset½øĞĞ±éÀú
+			//å¯¹hashmapä¸­çš„hashsetè¿›è¡Œéå†
 			Iterator setset = value.iterator();
 			while(setset.hasNext()){
 				String entry2 = (String) setset.next();

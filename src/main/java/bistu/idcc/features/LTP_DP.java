@@ -1,4 +1,4 @@
-package bistu.idcc.features;
+ï»¿package bistu.idcc.features;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,19 +15,19 @@ import java.net.URLEncoder;
 
 import bistu.idcc.functions.ClearTxt_Path;
 /**
- * µ÷ÓÃLTPµÄapi£¬½øĞĞ¾ä·¨·ÖÎö
+ * è°ƒç”¨LTPçš„apiï¼Œè¿›è¡Œå¥æ³•åˆ†æ
  * @author Joen
  *
  */
 public class LTP_DP {
 
 	public void ltp_dp(String path, String outpath)throws IOException{
-		//ÓÃÓÚ»ñÈ¡Ã¿¸ö¾ä×ÓµÄurl
+		//ç”¨äºè·å–æ¯ä¸ªå¥å­çš„url
 		Get_LTP_URL glu = new Get_LTP_URL();
-		//Çå¿Õ²¢´´½¨ÎÄ¼ş¼Ğ
+		//æ¸…ç©ºå¹¶åˆ›å»ºæ–‡ä»¶å¤¹
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.clearpath(outpath);
-		//ÊäÈëÁ÷
+		//è¾“å…¥æµ
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		String temp = null;
 		int num = 0;
@@ -36,7 +36,7 @@ public class LTP_DP {
 			num++;
 			System.out.println(num);
 			System.out.println(temp);
-			//»ñÈ¡Ã¿¾ä»°µÄurl£¬Á¬½Ó·şÎñÆ÷²¢»ñÈ¡·µ»ØĞÅÏ¢£¬ÓÉÓÚ·µ»ØµÄÊÇutf-8¸ñÊ½£¬Ğè¶îÍâ±ê×¢
+			//è·å–æ¯å¥è¯çš„urlï¼Œè¿æ¥æœåŠ¡å™¨å¹¶è·å–è¿”å›ä¿¡æ¯ï¼Œç”±äºè¿”å›çš„æ˜¯utf-8æ ¼å¼ï¼Œéœ€é¢å¤–æ ‡æ³¨
 			URL urltxt = glu.g_url(temp);
 	        URLConnection conn = urltxt.openConnection();
 	        conn.connect();
@@ -58,7 +58,7 @@ public class LTP_DP {
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		/**
-		 * Ã¿´Îµ÷ÓÃÊ±£¬»á°ÑÖ®Ç°Êä³ö¹ıµÄÊı¾İÈ«²¿Çå¿Õ¡£¾¡Á¿Ã¿´ÎÊ¹ÓÃÊ±¸ü»»Êä³öÂ·¾¶£¬ÓÉÓÚÍøÂçÔ­Òò£¬¿ÉÄÜ»áÖĞ¶Ï£¬
+		 * æ¯æ¬¡è°ƒç”¨æ—¶ï¼Œä¼šæŠŠä¹‹å‰è¾“å‡ºè¿‡çš„æ•°æ®å…¨éƒ¨æ¸…ç©ºã€‚å°½é‡æ¯æ¬¡ä½¿ç”¨æ—¶æ›´æ¢è¾“å‡ºè·¯å¾„ï¼Œç”±äºç½‘ç»œåŸå› ï¼Œå¯èƒ½ä¼šä¸­æ–­ï¼Œ
 		 */
 //		LTP_DP ltp = new LTP_DP();
 //		ltp.ltp_dp("sourcefile/candidate/candidate_set.txt", "sourcefile/features/ltp");
