@@ -12,7 +12,11 @@ public class Candidate_Main {
 		
 		//选取idf值最高的nvn词组，并写入文件。
 		Candidate_Set set = new Candidate_Set();
-		set.candset("sourcefile/candidate/after_filter.txt", "sourcefile/candidate/candidate_set.txt", "sourcefile/afparser");
+		set.candset("sourcefile/candidate/after_filter.txt", "sourcefile/candidate/candidate.txt", "sourcefile/afparser");
+		
+		//过滤掉nvn重复的句子
+		Filter_repeat fr = new Filter_repeat();
+		fr.flrepeat("sourcefile/candidate/candidate.txt", "sourcefile/candidate/candidate_set.txt");
 	}
 
 }

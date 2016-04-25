@@ -30,7 +30,6 @@ public class Bagwords {
 				}
 			}
 			
-			System.out.println(temp);
 		}
 		br.close();
 	} 

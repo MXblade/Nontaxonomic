@@ -9,39 +9,34 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 
 import bistu.idcc.functions.ClearTxt_Path;
 
-public class F1_words {
-	
+public class F3_Words {
+
 	String parsepath = "sourcefile/features/parse.txt";
-	String outpath = "sourcefile/features/features.txt";
+	String outpath = "sourcefile/features/single/f3_window.txt";
+	int window = 2;
 	Map<String, Integer> bagwords = new HashMap<String, Integer>();
+
 	
-	
-	public void feature()throws IOException{
-		Bagwords(parsepath);
+	public void getwords() throws IOException{
+		
+		Bagwords bg = new Bagwords(parsepath);
+		bagwords = bg.bagwords;
+		
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
-				
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(parsepath), "UTF-8"));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+		
 		String temp = null;
 		while((temp = br.readLine())!= null)
 		{
-			String nvn = gnvn(temp);
-			int[] lnvn = lg_nvn(temp);
 			Map<Integer, ArrayList<Integer>> words = nl_nvn(temp);
-			String[] ns = nvn.split(" ");
-			bw.write(nvn + " ");
-			for(String s :ns){
-				bw.write(bagwords.get(s) + " ");
-			}
-			for(int dis : lnvn){
-				bw.write(dis + " ");
-			}
 			for(int i = 1; i < 7; i++){
 				ArrayList<Integer> wds = words.get(i);
 				for(int j : wds){
@@ -49,72 +44,25 @@ public class F1_words {
 				}
 			}
 			ArrayList<Integer> snv = words.get(7);
-			bw.write(snv.size() + " ");
+			//若在该文件中需要显示距离，则取消两行注释
+			//bw.write(snv.size() + " ");
 			for(int i:snv){
 				bw.write(i + " ");
 			}
 			ArrayList<Integer> svn = words.get(8);
-			bw.write(svn.size() + " ");
+			//bw.write(svn.size() + " ");
 			for(int i:svn){
 				bw.write(i + " ");
 			}
 			
 			bw.newLine();
+
 		}
 		bw.close();
 		br.close();
 	}
 
-	/*
-	 * 获取nvn
-	 */
-	public String gnvn(String line){
-		String lin1 = line.split("\\{")[0];
-		String lin2 = line.split("\\{")[1];
-		String[] lin1list = lin1.split(" ");
-		String[] lin2list = lin2.split(" ");
-		String nvn = "";
-		for(int i = 0; i < lin1list.length; i++){
-			if(lin1list[i].equals("【")){
-				nvn = nvn + lin1list[i+1];
-			}
-		}
-		nvn = nvn + " " + lin2list[1];
-		for(int i = 0; i < lin2list.length; i++){
-			if(lin2list[i].equals("【")){
-				nvn = nvn + " " + lin2list[i+1];
-			}
-		}
-		return nvn;
-	}
 	
-	/*
-	 * 计算nvn三者之间的距离
-	 */
-	public int[] lg_nvn(String line){
-		int[] length = new int[2];
-		String temp1 = line.split("\\{")[0];
-		String[] p1list = temp1.split(" ");
-		for(int i = 0; i < p1list.length; i++){
-			if(p1list[i].equals("】")){
-				length[0] = p1list.length - i - 1;
-			}
-		}
-		
-		String temp2 = line.split("\\}")[1];
-		String[] p2list = temp2.split(" ");
-		for(int i = 0; i < p2list.length; i++){
-			if(p2list[i].equals("【")){
-				length[1] = i;
-			}
-		}
-
-		return length;
-	}
-	
-	/*
-	 * 计算三者之间的词
-	 */
 	public Map<Integer, ArrayList<Integer>> nl_nvn(String line){
 		int window = 2;
 		ArrayList<Integer> s1 = new ArrayList<Integer>();
@@ -230,31 +178,6 @@ public class F1_words {
 		return locn;
 		
 	} 
-	
-	/**
-	 * 词袋模型类
-	 * 给定分词后路径，用于构建词袋模型，bagwords<String,Integer>,分别为词，词的位置。
-	 * @author Joen
-	 *
-	 */
-	public void Bagwords(String path)throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
-		String temp = null;
-		int i = 0;
-		while((temp = br.readLine())!=null){
-			temp = temp.replaceAll("\\{|\\}|【|】", "");
-			String[] templist = temp.split(" ");
-			for(String s: templist){
-				if(!bagwords.containsKey(s)){
-					i++;
-					bagwords.put(s, i);
-				}
-			}
-			
-			System.out.println(temp);
-		}
-		br.close();
-	} 
 
 	/*
 	 * 根据句子返回每个词的位置int[]
@@ -267,11 +190,12 @@ public class F1_words {
 		}
 		return termloc;
 	}
+
 	
-	public static void main(String[] args)throws IOException {
+	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-		F1_words f1 = new F1_words();
-		f1.feature();
+		F3_Words f3 = new F3_Words();
+		f3.getwords();
 	}
 
 }
