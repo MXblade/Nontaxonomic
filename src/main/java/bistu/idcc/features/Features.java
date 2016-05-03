@@ -51,7 +51,7 @@ public class Features {
 	
 	
 	/*
-	 * 只包含词组的词。格式： 实体E1 关系词Ref 实体E2
+	 * 只包含词组的词。格式： 1:实体E1 2:关系词Ref 3:实体E2
 	 */
 	public void exam_1() throws IOException{
 		String inpath = f1path;
@@ -64,7 +64,7 @@ public class Features {
 		String temp = null;
 		while((temp = br.readLine()) != null){
 			String[] templist = temp.split(" ");
-			bw.write(templist[3] + " " + templist[4] + " " + templist[5]);
+			bw.write("1:" + templist[3] + " " + "2:" + templist[4] + " " +  "3:" + templist[5]);
 			bw.newLine();
 		}
 		br.close();
@@ -72,8 +72,10 @@ public class Features {
 		
 	}
 	
+	
+	
 	/*
-	 * exam_2包含词以及词间距离，格式：E1 Ref E2 dis(E1,E2) dis(E1,ref) dis(ref,E2) 
+	 * exam_2包含词以及词间距离，格式：1:E1 2:Ref 3:E2 4:dis(E1,E2) 5:dis(E1,ref) 6:dis(ref,E2) 
 	 */
 	public void exam_2() throws IOException{
 		String inpath1 = f1path;
@@ -90,8 +92,11 @@ public class Features {
 		while((temp1 = br1.readLine()) != null && ((temp2 = br2.readLine()) != null) )
 		{
 			String[] temp1list = temp1.split(" ");
-			bw.write(temp1list[3] + " " + temp1list[4] + " " + temp1list[5] + " ");
-			bw.write(temp2);
+			bw.write("1:" + temp1list[3] + " " + "2:" + temp1list[4] + " " + "3:" + temp1list[5]);
+			String[] temp2list = temp2.split(" ");
+			for(int i = 0; i < temp2list.length; i++){
+				bw.write(" " + (4+i) + ":" + temp2list[i]);
+			}
 			bw.newLine();
 		}
 		bw.close();
@@ -100,10 +105,10 @@ public class Features {
 	}
 
 	/*
-	 * exam_3包含词，词间距离，对于词组的窗口词 格式：E1 Ref E2 dis(e1,e2) dis(e1,ref) dis(ref,e2) before_e1 after_e1 before_ref after_ref before_e2 after_e2
+	 * exam_3: 词，窗口词。格式：1:E1 2:Ref 3:E2 7,8:before_e1 9,10:after_e1 11,12:before_ref 13,14:after_ref 15,16:before_e2 17,18:after_e2
 	 */
 	public void exam_3() throws IOException{
-		String inpath1 = "sourcefile/features/data/exam_2.txt";
+		String inpath1 = "sourcefile/features/data/exam_1.txt";
 		String inpath2 = f3path;
 		String outpath = "sourcefile/features/data/exam_3.txt";
 		
@@ -117,8 +122,37 @@ public class Features {
 		while(((temp1 = br1.readLine()) != null) && ((temp2 = br2.readLine()) != null)){
 			bw.write(temp1);
 			String[] temp2list = temp2.split(" ");
-			for(int i = 0; i < 6; i++){
-				bw.write(" " + temp2list[i]);
+			for(int i = 0; i < 12; i++){
+				bw.write(" " + (7+i) + ":" + temp2list[i]);
+			}
+			bw.newLine();
+		}
+		br1.close();
+		br2.close();
+		bw.close();
+	
+	}
+	
+	/*
+	 * exam_4包含词，词间距离，对于词组的窗口词 格式：:1:E1 2:Ref 3:E2 4:dis(E1,E2) 5:dis(E1,ref) 6:dis(ref,E2) 7,8:before_e1 9,10:after_e1 11,12:before_ref 13,14:after_ref 15,16:before_e2 17,18:after_e2
+	 */
+	public void exam_4() throws IOException{
+		String inpath1 = "sourcefile/features/data/exam_2.txt";
+		String inpath2 = f3path;
+		String outpath = "sourcefile/features/data/exam_4.txt";
+		
+		ClearTxt_Path clear = new ClearTxt_Path();
+		clear.cleartxt(outpath);
+		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
+		BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath2), "UTF-8"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+		String temp1 = null;
+		String temp2 = null;
+		while(((temp1 = br1.readLine()) != null) && ((temp2 = br2.readLine()) != null)){
+			bw.write(temp1);
+			String[] temp2list = temp2.split(" ");
+			for(int i = 0; i < 12; i++){
+				bw.write(" " + (7+i) + ":" + temp2list[i]);
 			}
 			bw.newLine();
 		}
@@ -128,13 +162,15 @@ public class Features {
 		
 	}
 
+	
+	
 	/*
-	 * exam_4词，词距，窗口词，mdp
+	 * exam_5词，词距，窗口词，20:mdp
 	 */
-	public void exam_4() throws IOException{
-		String inpath1 = "sourcefile/features/data/exam_3.txt";
+	public void exam_5() throws IOException{
+		String inpath1 = "sourcefile/features/data/exam_4.txt";
 		String inpath2 = f4path;
-		String outpath = "sourcefile/features/data/exam_4.txt";
+		String outpath = "sourcefile/features/data/exam_5.txt";
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
@@ -143,7 +179,7 @@ public class Features {
 		String temp1 = null;
 		String temp2 = null;
 		while(((temp1 = br1.readLine()) != null) && ((temp2 = br2.readLine()) != null)){
-			bw.write(temp1 + " " + temp2);
+			bw.write(temp1 + " 20:" +temp2);
 			bw.newLine();
 		}
 		bw.close();
@@ -152,12 +188,12 @@ public class Features {
 	}
 	
 	/*
-	 * exam_5 词，词距，窗口词， 词距中的词
+	 * exam_6 词，词距，窗口词， 30+:词距中的词
 	 */
-	public void exam_5() throws IOException{
+	public void exam_6() throws IOException{
 		String inpath1 = "sourcefile/features/data/exam_4.txt";
 		String inpath2 = f3path;
-		String outpath = "sourcefile/features/data/exam_5.txt";
+		String outpath = "sourcefile/features/data/exam_6.txt";
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
@@ -170,7 +206,7 @@ public class Features {
 			
 			bw.write(temp1);
 			for(int i = 6; i < temp2list.length; i++){
-				bw.write(" " + temp2list[i]);
+				bw.write(" " + (i+24) + ":"  + temp2list[i]);
 			}
 			bw.newLine();
 		}
@@ -179,29 +215,6 @@ public class Features {
 		br2.close();
 	}
 	
-	/*
-	 * exam_6 词，词距，窗口词，mdp，词距中的词
-	 */
-	public void exam_6() throws IOException{
-		String inpath1 = "sourcefile/features/data/exam_2.txt";
-		String inpath2 = f3path;
-		String outpath = "sourcefile/features/data/exam_6.txt";
-		ClearTxt_Path clear = new ClearTxt_Path();
-		clear.cleartxt(outpath);
-		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
-		BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath2), "UTF-8"));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
-		String temp1 = null;
-		String temp2 = null;
-		while(((temp1 = br1.readLine()) != null) && ((temp2 = br2.readLine()) != null)){
-			bw.write(temp1 + " " + temp2);
-			bw.newLine();
-		}
-		bw.close();
-		br1.close();
-		br2.close();
-
-	}
 
 	
 	public static void main(String[] args) throws IOException{
