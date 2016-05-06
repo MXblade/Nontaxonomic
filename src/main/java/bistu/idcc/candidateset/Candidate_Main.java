@@ -7,7 +7,7 @@ public class Candidate_Main {
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		
-/*		//将分词后的语料进行标记
+		//将分词后的语料进行标记
 		EntityExtraction e = new EntityExtraction("sourceFile/PatentTerm.txt","sourceFile/after_parser.txt","sourceFile/candidate/TagParser.txt");
 		
 		System.out.println("完成语料标记");
@@ -20,7 +20,7 @@ public class Candidate_Main {
 		System.out.println("完成无nvn过滤");
 		System.out.println("……");
 	
-*/		
+		
 		//选取idf值最高的nvn词组，并写入文件。
 		Candidate_Set set = new Candidate_Set();
 		set.candset("sourcefile/candidate/after_filter.txt", "sourcefile/candidate/candidate.txt", "sourcefile/afparser");
