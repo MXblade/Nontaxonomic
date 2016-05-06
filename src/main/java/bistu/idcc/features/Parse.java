@@ -25,7 +25,6 @@ public class Parse {
 		String temp = null;
 		while((temp = br.readLine()) !=null){
 			List<Term> templist = HanLP.segment(temp);
-			System.out.println(templist);
 			for(Term i:templist){
 				String[] ilist = i.toString().split("/");
 				bw.write(ilist[0] + " ");

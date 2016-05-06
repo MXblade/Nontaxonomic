@@ -3,9 +3,13 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -38,7 +42,7 @@ public class HashMap_Patents {
 		File[] files = folder.listFiles();
 		for(File f: files){
 			//构建输入流
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "GBK"));
 			String filename = f.getName();
 			//构建每片专利的hashset
 			HashSet<String> fileset = new HashSet<String>();
@@ -50,6 +54,7 @@ public class HashMap_Patents {
 			}
 			br.close();
 			hm_p.put(filename, fileset);
+			//System.out.println(filename + " " + fileset);
 		}
 	}
 	
@@ -61,7 +66,7 @@ public class HashMap_Patents {
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		//输出流
-		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
 		//遍历hashmap hm_p
 		Iterator ite = hm_p.entrySet().iterator();
 		while(ite.hasNext()){

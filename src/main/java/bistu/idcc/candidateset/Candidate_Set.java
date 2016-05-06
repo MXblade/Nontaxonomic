@@ -2,9 +2,13 @@
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -32,12 +36,12 @@ public class Candidate_Set {
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		//输入输出流
-		BufferedReader br = new BufferedReader(new FileReader(path));
-		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
 		
 		//创建HashMap_Patents对象，构建专利hashmap
 		HashMap_Patents hmp = new HashMap_Patents(content_folder_path);
-		
+
 		//创建IDF_NVN对象，计算idf值
 		IDF_NVN idf = new IDF_NVN();
 		
@@ -45,7 +49,8 @@ public class Candidate_Set {
 		String temp = null;
 		int num = 0;
 		while((temp = br.readLine()) != null){
-			System.out.println(num++);
+			//System.out.println(num++);
+			
 			//对temp，调用phraseset，遍历所有的nvn。
 			ArrayList<String> tempset = phraseset(temp);
 			//用于判断idf的最大值

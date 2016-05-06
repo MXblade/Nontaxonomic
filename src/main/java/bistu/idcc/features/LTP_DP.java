@@ -86,8 +86,8 @@ public class LTP_DP {
 		/**
 		 * 每次调用时，会把之前输出过的数据全部清空。尽量每次使用时更换输出路径，由于网络原因，可能会中断，
 		 */
-//		LTP_DP ltp = new LTP_DP();
-//		ltp.ltp_dp("sourcefile/candidate/candidate_set.txt", "sourcefile/features/ltp");
+		LTP_DP ltp = new LTP_DP();
+		ltp.ltp_dp("sourcefile/candidate/candidate_set.txt", "sourcefile/features/ltp");
 	}
 
 }

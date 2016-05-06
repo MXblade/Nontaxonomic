@@ -22,7 +22,7 @@ public class F3_Words {
 	Map<String, Integer> bagwords = new HashMap<String, Integer>();
 
 	
-	public void getwords() throws IOException{
+	public F3_Words() throws IOException{
 		
 		Bagwords bg = new Bagwords(parsepath);
 		bagwords = bg.bagwords;
@@ -192,10 +192,9 @@ public class F3_Words {
 	}
 
 	
-	public static void main(String[] args) throws IOException{
+/*	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		F3_Words f3 = new F3_Words();
-		f3.getwords();
 	}
-
+*/
 }

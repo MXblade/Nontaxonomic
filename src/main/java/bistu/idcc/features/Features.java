@@ -219,6 +219,12 @@ public class Features {
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
+		F1_Loc_nvn f1 = new F1_Loc_nvn();
+		F2_Distance_nvn f2 = new F2_Distance_nvn();
+		F3_Words f3 = new F3_Words();
+		F4_MDP f4 = new F4_MDP();
+		
+		
 		Features fea = new Features();
 		fea.nvn();
 		fea.exam_1();

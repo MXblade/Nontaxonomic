@@ -19,7 +19,7 @@ public class F1_Loc_nvn {
 	String outpath = "sourcefile/features/single/f1_nvnbase.txt";
 	Map<String, Integer> bagwords = new HashMap<String, Integer>();
 
-	public void loc() throws IOException{
+	public F1_Loc_nvn() throws IOException{
 		Bagwords bg = new Bagwords(parsepath);
 		bagwords = bg.bagwords;
 		HashSet<String> ss = new HashSet<String>();
@@ -69,10 +69,9 @@ public class F1_Loc_nvn {
 		return nvn;
 	}
 	
-	public static void main(String[] args) throws IOException{
+/*	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		F1_Loc_nvn lnvn = new F1_Loc_nvn();
-		lnvn.loc();
 	}
-
+*/
 }

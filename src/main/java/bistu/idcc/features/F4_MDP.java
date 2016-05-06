@@ -22,7 +22,7 @@ public class F4_MDP {
 	String ltppath = "sourcefile/features/ltp";
 	String outpath = "sourcefile/features/single/f4_mdp.txt";
 	
-	public void mdp() throws IOException{
+	public F4_MDP() throws IOException{
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
@@ -104,10 +104,9 @@ public class F4_MDP {
 		return mdp;
 	}
 	
-	public static void main(String[] args) throws IOException{
+/*	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		F4_MDP f4 = new F4_MDP();
-		f4.mdp();
 	}
-
+*/
 }

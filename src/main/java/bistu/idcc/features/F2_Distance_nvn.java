@@ -14,7 +14,7 @@ public class F2_Distance_nvn {
 	String parsepath = "sourcefile/features/parse.txt";
 	String outpath = "sourcefile/features/single/f2_distance.txt";
 
-	public void distance() throws IOException{
+	public F2_Distance_nvn() throws IOException{
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(parsepath), "UTF-8"));
@@ -43,10 +43,9 @@ public class F2_Distance_nvn {
 		bw.close();
 
 	}
-	public static void main(String[] args)throws IOException {
+/*	public static void main(String[] args)throws IOException {
 		// TODO Auto-generated method stub
 		F2_Distance_nvn dis = new F2_Distance_nvn();
-		dis.distance();
 	}
-
+*/
 }

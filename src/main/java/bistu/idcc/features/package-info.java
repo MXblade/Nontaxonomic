@@ -1,6 +1,12 @@
 ﻿/**
- * 提取候选集的特征
- * ParseDependency 对句子进行句法分析，获取n-v和v-n之间的句法关系。
+ * 抽取特征
+ * LTP_DP 对给定的候选句子进行依存句法分析，得到分析结果放入ltp文件夹
+ * Parse 对给定的候选句子进行分词，结果存入parse.txt，用于之后提取特征
+ * Features 调用4个特征提取对象，并将4个特征混合分写文件。
+ * 	F1_Loc_nvn 提取词组每个词对应的Bagwords的位置。
+ * 	F2_Distance_nvn 提取词组中的距离
+ *  F3_Words 提取词组中包含的词
+ *  F4_MDP 利用已得到的依存句法分析结果得到MDP
  */
 /**
  * @author Joen

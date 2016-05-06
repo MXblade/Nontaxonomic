@@ -42,14 +42,14 @@ public class Filter_repeat {
 		String v = lin2.substring(0, lin2.indexOf("}"));
 		String n2 = lin2.substring(lin2.indexOf("【") + 1 , lin2.indexOf("】"));
 		nvn = n1 + " " + v + " " + n2;
-		System.out.println(nvn);
+		//System.out.println(nvn);
 		return nvn;
 	}
 	
-	public static void main(String[] args) throws IOException{
+/*	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		Filter_repeat fr = new Filter_repeat();
 		fr.flrepeat("sourcefile/candidate/candidate_set.txt", "sourcefile/candidate/candidate_filter.txt");
 	}
-
+*/
 }

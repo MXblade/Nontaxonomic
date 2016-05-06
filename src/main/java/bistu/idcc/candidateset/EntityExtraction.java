@@ -25,15 +25,15 @@ public class EntityExtraction {
 	public static String tagparpath;
 	public static ArrayList<String> term;
 	
-	public EntityExtraction() throws IOException{
+	public EntityExtraction(String tpath, String inpath, String outpath) throws IOException{
 		
 		term = new ArrayList<String>();
 		//实体词典的位置
-		termpath = "sourceFile/PatentTerm.txt";
+		termpath = tpath;
 		//分词后的语料的位置
-		parserpath = "sourceFile/after_parser.txt";
+		parserpath = inpath;
 		//抽取后标记实体的语料
-		tagparpath = "sourceFile/candidate/TagParser.txt";
+		tagparpath = outpath;
 		readTerm(termpath);
 		
 
@@ -142,7 +142,7 @@ public class EntityExtraction {
 		
 	}
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		EntityExtraction ee;
 		try {
@@ -155,5 +155,5 @@ public class EntityExtraction {
 		//System.out.println(ss);
 		System.out.println(new Date());
 	}
-
+*/
 }

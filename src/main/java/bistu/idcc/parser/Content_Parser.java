@@ -3,9 +3,13 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.List;
 
@@ -36,11 +40,11 @@ public class Content_Parser {
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
 		//输出流
-		BufferedWriter bw = new BufferedWriter(new FileWriter(outpath));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "GBK"));
 		
 		for(File f:files){
 			//输入流
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "GBK"));
 			//读取第三行内容
 			String temp = null;
 			br.readLine();
@@ -86,12 +90,12 @@ public class Content_Parser {
 		File[] files = folder.listFiles();
 		for(File f:files){
 			//输入流
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "GBK"));
 			//构建输出文件路径，并清空创建文件
 			String fileoutpt = outpath + "/" + f.getName();
 			clear.cleartxt(fileoutpt);
 			//输出流
-			BufferedWriter bw = new BufferedWriter(new FileWriter(fileoutpt));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileoutpt), "GBK"));
 			//读取第三行内容
 			String temp = null;
 			br.readLine();
