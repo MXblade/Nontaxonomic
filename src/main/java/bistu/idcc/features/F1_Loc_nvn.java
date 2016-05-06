@@ -48,12 +48,12 @@ public class F1_Loc_nvn {
 		for(int i = 0; i < lin1list.length; i++){
 			if(lin1list[i].equals("【")){
 				nvn = nvn + lin1list[i+1];
-				System.out.println(lin1list[i+1]);
-				if(bagwords.containsKey(lin1list[i+1])){
-					System.out.println(true);
-				}
-				else
-					System.out.println(false);
+//				System.out.println(lin1list[i+1]);
+//				if(bagwords.containsKey(lin1list[i+1])){
+//					System.out.println(true);
+//				}
+//				else
+//					System.out.println(false);
 				loc = bagwords.get(lin1list[i+1]).toString();
 			}
 		}

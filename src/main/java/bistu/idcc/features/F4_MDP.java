@@ -45,7 +45,7 @@ public class F4_MDP {
 			bw.newLine();
 		}
 		bw.close();
-		System.out.println(count1);
+		//System.out.println(count1);
 	}
 	
 	public String[][] readxml(File f){
