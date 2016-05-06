@@ -9,7 +9,7 @@ public class Parser_Main {
 		// TODO Auto-generated method stub
 
 		Content_Parser cp = new Content_Parser();
-		//cp.parser("sourcefile/patent", "sourcefile/after_parser.txt");
+		cp.parser("sourcefile/patent", "sourcefile/after_parser.txt");
 		cp.parser_files("sourcefile/patent", "sourcefile/afparser");
 		System.out.println(new Date());
 
