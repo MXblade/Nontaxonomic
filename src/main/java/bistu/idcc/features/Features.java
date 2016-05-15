@@ -16,18 +16,19 @@ import bistu.idcc.functions.ClearTxt_Path;
 public class Features {
 
 	String pasepath = "sourcefile/features/parse.txt";
+	String tagpath = "sourcefile/features/data/biaozhu.txt";
 	String f1path = "sourcefile/features/single/f1_nvnbase.txt";
 	String f2path = "sourcefile/features/single/f2_distance.txt";
 	String f3path = "sourcefile/features/single/f3_window.txt";
 	String f4path = "sourcefile/features/single/f4_mdp.txt";
 	
-	/*
+/*	
 	 * 只包含词对和句子，用于标注非分类关系
-	 */
+	 
 	public void nvn() throws IOException{
 		
 		String inpath = pasepath;
-		String outpath = "sourcefile/features/data/biaozhu.txt";
+		String outpath = tagpath;
 
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
@@ -49,7 +50,7 @@ public class Features {
 		bw.close();
 	}
 	
-	
+*/	
 	/*
 	 * 只包含词组的词。格式： 1:实体E1 2:关系词Ref 3:实体E2
 	 */
@@ -61,10 +62,14 @@ public class Features {
 		clear.cleartxt(outpath);
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inpath), "UTF-8"));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+		BufferedReader br_tag = new BufferedReader(new InputStreamReader(new FileInputStream(tagpath), "UTF-8"));
+
+		String tag_temp = null;
 		String temp = null;
-		while((temp = br.readLine()) != null){
+		while(((temp = br.readLine()) != null) && ((tag_temp = br_tag.readLine()) != null)){
+			String tag = tag_temp.split(" ")[0];
 			String[] templist = temp.split(" ");
-			bw.write("1:" + templist[3] + " " + "2:" + templist[4] + " " +  "3:" + templist[5]);
+			bw.write(tag + " 1:" + templist[3] + " 2:" + templist[4] + " 3:" + templist[5]);
 			bw.newLine();
 		}
 		br.close();
@@ -87,12 +92,16 @@ public class Features {
 		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
 		BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath2), "UTF-8"));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+		BufferedReader br_tag = new BufferedReader(new InputStreamReader(new FileInputStream(tagpath), "UTF-8"));
+
+		String tag_temp = null;
 		String temp1 = null;
 		String temp2 = null;
-		while((temp1 = br1.readLine()) != null && ((temp2 = br2.readLine()) != null) )
+		while((temp1 = br1.readLine()) != null && ((temp2 = br2.readLine()) != null) && ((tag_temp = br_tag.readLine()) != null))
 		{
 			String[] temp1list = temp1.split(" ");
-			bw.write("1:" + temp1list[3] + " " + "2:" + temp1list[4] + " " + "3:" + temp1list[5]);
+			String tag = tag_temp.split(" ")[0];
+			bw.write(tag + " 1:" + temp1list[3] + " " + "2:" + temp1list[4] + " " + "3:" + temp1list[5]);
 			String[] temp2list = temp2.split(" ");
 			for(int i = 0; i < temp2list.length; i++){
 				bw.write(" " + (4+i) + ":" + temp2list[i]);
@@ -117,9 +126,10 @@ public class Features {
 		BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath1), "UTF-8"));
 		BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(inpath2), "UTF-8"));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+
 		String temp1 = null;
 		String temp2 = null;
-		while(((temp1 = br1.readLine()) != null) && ((temp2 = br2.readLine()) != null)){
+		while((temp1 = br1.readLine()) != null && ((temp2 = br2.readLine()) != null)){
 			bw.write(temp1);
 			String[] temp2list = temp2.split(" ");
 			for(int i = 0; i < 12; i++){
@@ -226,7 +236,7 @@ public class Features {
 		
 		
 		Features fea = new Features();
-		fea.nvn();
+		//fea.nvn();
 		fea.exam_1();
 		fea.exam_2();
 		fea.exam_3();
