@@ -33,6 +33,7 @@ public class Test_biaozhu {
 				System.out.println("Error: " + linenum);
 			}
 		}
+		br.close();
 		System.out.println("sum_0: " + count_0 + "; sum_1: " + count_1);
 	}
 
