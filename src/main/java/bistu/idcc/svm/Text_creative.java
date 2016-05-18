@@ -13,16 +13,16 @@ import bistu.idcc.functions.ClearTxt_Path;
 
 /**
  * 将数据分为训练语料和测试语料
+ * 给定文件路径和训练语料的数目
  * @author Joen
  *
  */
 public class Text_creative {
 
 	
-	public void cretxt(String inpath, String ofpath, int num) throws IOException{
-		File f = new File(inpath);
-		String outpath_train = ofpath + "train_" + f.getName();
-		String outpath_test = ofpath + "test_" + f.getName();
+	public void cretxt(String inpath, int num) throws IOException{
+		String outpath_train = inpath.split(".txt")[0] + "_train.txt";
+		String outpath_test = inpath.split(".txt")[0] + "_test.txt";
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath_train);
 		clear.cleartxt(outpath_test);
@@ -53,12 +53,12 @@ public class Text_creative {
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		Text_creative ct = new Text_creative();
-		ct.cretxt("sourcefile/svm/exam_1.txt", "sourcefile/svm/", 5000);
-		ct.cretxt("sourcefile/svm/exam_2.txt", "sourcefile/svm/", 5000);
-		ct.cretxt("sourcefile/svm/exam_3.txt", "sourcefile/svm/", 5000);
-		ct.cretxt("sourcefile/svm/exam_4.txt", "sourcefile/svm/", 5000);
-		ct.cretxt("sourcefile/svm/exam_5.txt", "sourcefile/svm/", 5000);
-		ct.cretxt("sourcefile/svm/exam_6.txt", "sourcefile/svm/", 5000);
+		ct.cretxt("sourcefile/svm/exam_1.txt", 5000);
+		ct.cretxt("sourcefile/svm/exam_2.txt", 5000);
+		ct.cretxt("sourcefile/svm/exam_3.txt", 5000);
+		ct.cretxt("sourcefile/svm/exam_4.txt", 5000);
+		ct.cretxt("sourcefile/svm/exam_5.txt", 5000);
+		ct.cretxt("sourcefile/svm/exam_6.txt", 5000);
 	}
 
 }

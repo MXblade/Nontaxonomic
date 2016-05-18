@@ -4,6 +4,13 @@ import java.io.IOException;
 import libsvm.svm;
 
 import libsvm.svm_model;
+/**
+ * 调用svm
+ * svm(训练语料，模型路径，测试语料，结果路径)
+ * @author Joen
+ *
+ */
+
 public class Svm {
 	public void svm(String trainpath, String modelpath, String testpath, String resultpath) throws IOException{
 		  svm_train svmt = new svm_train();
