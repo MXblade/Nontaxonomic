@@ -54,58 +54,105 @@ public class Test_main {
 		br2.close();
 		
 	}
+	/*
+	 * 测试单个特征的分类效果
+	 */
+	public static void test_single() throws IOException{
+		for(int i = 1; i < 19; i++){
+		String exampath = "sourcefile/testsvm/testsingle/singl_" + String.valueOf(i) + ".txt";
+		Count_01_Svm_Test tst = new Count_01_Svm_Test();
+//		tst.count(exampath);
+//		tst.delete_0("sourcefile/testsvm/mx_2.txt", "sourcefile/testsvm/mx_3.txt");
+//		tst.count("sourcefile/testsvm/mx_3.txt");
+
+		
+		Text_creative tt = new Text_creative();
+		tt.cretxt(exampath, 5000);
+		String trainpath = exampath.split(".txt")[0] + "_train.txt";
+		String testpath = exampath.split(".txt")[0] + "_test.txt";
+		String modelpath = exampath.split(".txt")[0] + ".model";
+		String resultpath = exampath.split(".txt")[0] + "_result.txt";
+//		Svm ss = new Svm();
+//		ss.svm(trainpath, modelpath, testpath, resultpath);
+		System.out.println(i + ": ");
+		tst.count(resultpath);
+		}
+	}
+	
+	/*
+	 * 转化特征表示
+	 */
+	public static void tran_f()throws IOException{
+		
+		String inpath = "sourcefile/svm/exam_4.txt";
+		String outpath = "sourcefile/testsvm/tran_exam_4.txt";
+		ClearTxt_Path clear = new ClearTxt_Path();
+		clear.cleartxt(outpath);
+				
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inpath), "UTF-8"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
+		String temp = null;
+		while((temp = br.readLine())!=null){
+			String[] list = temp.split(" ");
+			String line = list[0];
+			for(int i = 1; i < 4; i++){
+				line = line + " " + list[i].split(":")[1] + ":1";
+			}
+//			for(int i = 7; i < 19; i++){
+//				line = line + " " + list[i].split(":")[1] + ":1";
+//			}
+//			for(int i = 4; i < 7; i++){
+//				line = line + " " + (9736 + i) + ":" + list[i].split(":")[1];
+//			}
+			bw.write(line);
+			bw.newLine();
+		}
+		bw.close();
+		br.close();
+
+	}
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-/*		for(int i = 1; i < 19; i++){
-			String exampath = "sourcefile/testsvm/testsingle/singl_" + String.valueOf(i) + ".txt";
-			Count_01_Svm_Test tst = new Count_01_Svm_Test();
-			tst.count(exampath);
-//			tst.delete_0("sourcefile/testsvm/mx_2.txt", "sourcefile/testsvm/mx_3.txt");
-//			tst.count("sourcefile/testsvm/mx_3.txt");
+//		test_single();
 
-			
-			Text_creative tt = new Text_creative();
-			tt.cretxt(exampath, 5000);
-			String trainpath = exampath.split(".txt")[0] + "_train.txt";
-			String testpath = exampath.split(".txt")[0] + "_test.txt";
-			String modelpath = exampath.split(".txt")[0] + ".model";
-			String resultpath = exampath.split(".txt")[0] + "_result.txt";
-			Svm ss = new Svm();
-			ss.svm(trainpath, modelpath, testpath, resultpath);
+		Svm ss = new Svm();
+		ss.svm("sourcefile/testsvm/train.txt", "sourcefile/testsvm/hy.model", "sourcefile/testsvm/test.txt", "sourcefile/testsvm/hy_result.txt");
+		Count_01_Svm_Test ct = new Count_01_Svm_Test();
+		ct.count("sourcefile/testsvm/hy_result.txt");
+		
+		//tran_f();
+//		Count_01_Svm_Test ct = new Count_01_Svm_Test();
+//		ct.delete_0("sourcefile/testsvm/tran_exam_4.txt", "sourcefile/testsvm/0_tran_exam_4.txt");
+		//svmtest("sourcefile/testsvm/tran_exam_4.txt");
+		
 
-		}
-*/ 
-		Test_delete_3 d3 = new Test_delete_3();
-		d3.delete("sourcefile/svm/exam_4.txt", "sourcefile/testsvm/delete_3.txt");
-		//merge("sourcefile/testsvm/f124.txt", "sourcefile/testsvm/testsingle/singl_5.txt", "sourcefile/testsvm/f1245.txt");
-		String txtpath = "sourcefile/testsvm/delete_3.txt";
+	}
+
+	
+	
+	
+	
+	/*
+	 * 给定输入文件，对其进行分离训练语料，进行svm和统计次数
+	 */
+	public static void svmtest(String inpath) throws IOException{
+		String txtpath = inpath;
 		String trainpath = txtpath.split(".txt")[0] + "_train.txt";
 		String testpath = txtpath.split(".txt")[0] + "_test.txt";
 		String modelpath = txtpath.split(".txt")[0] + ".model";
 		String resultpath = txtpath.split(".txt")[0] + "_result.txt";
 
-		//equal("sourcefile/testsvm/f123.txt", "sourcefile/testsvm/exam_1.txt");
-		
 		Count_01_Svm_Test tst = new Count_01_Svm_Test();
 		tst.count(txtpath);
 	
 		Text_creative tt = new Text_creative();
-		tt.cretxt(txtpath, 5000);
+		tt.cretxt(txtpath, 3000);
 		
 		Svm ss = new Svm();
 		ss.svm(trainpath, modelpath, testpath, resultpath);
 		
 		tst.count(resultpath);
 
-
-/*		for(int i = 1; i < 19; i++){
-			String countpath = "sourcefile/testsvm/testsingle/singl_" + String.valueOf(i) + "_result.txt";
-			Count_01_Svm_Test tst = new Count_01_Svm_Test();
-			System.out.println("result " + i);
-			tst.count(countpath);
-		}
-*/
 	}
-
 }

@@ -32,9 +32,13 @@ public class Bagwords {
 			
 		}
 		br.close();
+		//System.out.println(bagwords.size());
 	} 
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
+		/*
+		 * 得到的词袋大小为9736
+		 */
 		Bagwords bg = new Bagwords("sourcefile/features/parse.txt");
 	}
 
