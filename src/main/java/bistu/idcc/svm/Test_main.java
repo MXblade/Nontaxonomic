@@ -116,15 +116,15 @@ public class Test_main {
 		// TODO Auto-generated method stub
 //		test_single();
 
-		Svm ss = new Svm();
-		ss.svm("sourcefile/testsvm/train.txt", "sourcefile/testsvm/hy.model", "sourcefile/testsvm/test.txt", "sourcefile/testsvm/hy_result.txt");
-		Count_01_Svm_Test ct = new Count_01_Svm_Test();
-		ct.count("sourcefile/testsvm/hy_result.txt");
+//		Svm ss = new Svm();
+//		ss.svm("sourcefile/testsvm/train.txt", "sourcefile/testsvm/hy.model", "sourcefile/testsvm/test.txt", "sourcefile/testsvm/hy_result.txt");
+//		Count_01_Svm_Test ct = new Count_01_Svm_Test();
+//		ct.count("sourcefile/testsvm/hy_result.txt");
 		
 		//tran_f();
 //		Count_01_Svm_Test ct = new Count_01_Svm_Test();
 //		ct.delete_0("sourcefile/testsvm/tran_exam_4.txt", "sourcefile/testsvm/0_tran_exam_4.txt");
-		//svmtest("sourcefile/testsvm/tran_exam_4.txt");
+		svmtest("sourcefile/svm/exam_1.txt");
 		
 
 	}
@@ -147,7 +147,7 @@ public class Test_main {
 		tst.count(txtpath);
 	
 		Text_creative tt = new Text_creative();
-		tt.cretxt(txtpath, 3000);
+		tt.cretxt(txtpath, 4500);
 		
 		Svm ss = new Svm();
 		ss.svm(trainpath, modelpath, testpath, resultpath);
