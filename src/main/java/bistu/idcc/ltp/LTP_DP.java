@@ -1,4 +1,4 @@
-﻿package bistu.idcc.features;
+﻿package bistu.idcc.ltp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

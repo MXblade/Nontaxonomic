@@ -37,7 +37,8 @@ public class Extra_text {
 			line++;
 			int tnum = 0;
 			String[] list = temp.split(s);
-			if(list.length != 3)
+			String[] ll = list[0].split("【");
+			if(ll.length != 2)
 				System.out.println(line);
 		}
 	}
@@ -46,7 +47,7 @@ public class Extra_text {
 		Extra_text ex = new Extra_text();
 //		ex.extra("sourcefile/second/Train.txt", "sourcefile/second/text_train.txt");
 //		ex.extra("sourcefile/second/Test.txt", "sourcefile/second/text_test.txt");
-		ex.count("sourcefile/second/text_test.txt", "【");
+		ex.count("sourcefile/second/text_test.txt", "#");
 	}
 
 }

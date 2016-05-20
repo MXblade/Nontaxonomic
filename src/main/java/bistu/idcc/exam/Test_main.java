@@ -1,4 +1,4 @@
-package bistu.idcc.svm;
+package bistu.idcc.exam;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -149,8 +149,7 @@ public class Test_main {
 		Text_creative tt = new Text_creative();
 		tt.cretxt(txtpath, 4500);
 		
-		Svm ss = new Svm();
-		ss.svm(trainpath, modelpath, testpath, resultpath);
+		Svm ss = new Svm(trainpath, modelpath, testpath, resultpath);
 		
 		tst.count(resultpath);
 

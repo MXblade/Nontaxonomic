@@ -1,4 +1,4 @@
-package bistu.idcc.svm;
+package bistu.idcc.exam;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -4,7 +4,7 @@ import libsvm.*;
 import java.io.*;
 import java.util.*;
 
-class svm_train {
+public class svm_train {
 	private svm_parameter param;		// set by parse_command_line
 	private svm_problem prob;		// set by read_problem
 	private svm_model model;
