@@ -1,4 +1,4 @@
-package bistu.idcc.second_fea;
+package bistu.idcc.second;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

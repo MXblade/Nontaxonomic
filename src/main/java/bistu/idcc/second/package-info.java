@@ -10,4 +10,4 @@
  * @author Joen
  *
  */
-package bistu.idcc.second_fea;
+package bistu.idcc.second;
