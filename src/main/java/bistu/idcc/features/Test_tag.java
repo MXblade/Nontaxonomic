@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
  * @author Joen
  *
  */
-public class Test_biaozhu {
+public class Test_tag {
 
 	public static void main(String[] args)throws IOException {
 		// TODO Auto-generated method stub

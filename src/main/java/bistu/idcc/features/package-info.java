@@ -6,6 +6,7 @@
  * 	F2_Distance_nvn 提取词组中的距离
  *  F3_Words 提取词组中包含的词
  *  F4_MDP 利用已得到的依存句法分析结果得到MDP
+ * Test_tag 用于检测手工标注是否有漏标等问题
  */
 /**
  * @author Joen
