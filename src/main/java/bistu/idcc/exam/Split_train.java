@@ -13,11 +13,11 @@ import bistu.idcc.functions.ClearTxt_Path;
 
 /**
  * 将数据分为训练语料和测试语料
- * 给定文件路径和训练语料的数目
+ * 给定文件路径inpath和训练语料的数目num
  * @author Joen
  *
  */
-public class Text_creative {
+public class Split_train {
 
 	
 	public void cretxt(String inpath, int num) throws IOException{
@@ -52,7 +52,7 @@ public class Text_creative {
 	
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
-		Text_creative ct = new Text_creative();
+		Split_train ct = new Split_train();
 		ct.cretxt("sourcefile/svm/exam_1.txt", 5000);
 		ct.cretxt("sourcefile/svm/exam_2.txt", 5000);
 		ct.cretxt("sourcefile/svm/exam_3.txt", 5000);

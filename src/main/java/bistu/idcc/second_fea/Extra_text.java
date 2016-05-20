@@ -12,6 +12,9 @@ import org.nlpcn.commons.lang.occurrence.Count;
 
 import bistu.idcc.functions.ClearTxt_Path;
 
+/**
+ * 抽取之前包括特征和语料中的语料部分。
+ */
 public class Extra_text {
 
 	public void extra(String path, String outpath) throws IOException{
@@ -29,25 +32,11 @@ public class Extra_text {
 		br.close();
 	}
 	
-	public void count(String path, String s)throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "utf-8"));
-		String temp = null;
-		int line = 0;
-		while((temp = br.readLine())!=null){
-			line++;
-			int tnum = 0;
-			String[] list = temp.split(s);
-			String[] ll = list[0].split("【");
-			if(ll.length != 2)
-				System.out.println(line);
-		}
-	}
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		Extra_text ex = new Extra_text();
-//		ex.extra("sourcefile/second/Train.txt", "sourcefile/second/text_train.txt");
-//		ex.extra("sourcefile/second/Test.txt", "sourcefile/second/text_test.txt");
-		ex.count("sourcefile/second/text_test.txt", "#");
+		ex.extra("sourcefile/second/Train.txt", "sourcefile/second/text_train.txt");
+		ex.extra("sourcefile/second/Test.txt", "sourcefile/second/text_test.txt");
 	}
 
 }

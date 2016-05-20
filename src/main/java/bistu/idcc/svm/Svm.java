@@ -1,4 +1,4 @@
-package bistu.idcc.exam;
+package bistu.idcc.svm;
 import java.io.IOException;
 
 import libsvm.svm;

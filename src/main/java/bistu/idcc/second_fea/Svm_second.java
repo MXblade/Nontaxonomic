@@ -2,9 +2,13 @@ package bistu.idcc.second_fea;
 
 import java.io.IOException;
 
-import bistu.idcc.exam.Accuracy;
-import bistu.idcc.exam.Svm;
-
+import bistu.idcc.functions.Accuracy;
+import bistu.idcc.svm.Svm;
+/**
+ * 测试实验结果
+ * @author Joen
+ *
+ */
 public class Svm_second {
 
 	public static void main(String[] args) throws IOException{
@@ -23,7 +27,10 @@ public class Svm_second {
 	}
 	
 	
-	
+	/*
+	 * 给定测试语料路径，和第几次实验，自动根据测试语料名字和次数选中训练语料，模型，输出文件路径
+	 * 并调用accuracy类进行准确度计算
+	 */
 	public static void test(String path, String num) throws IOException{
 		String testpath = path;
 		String folderpath = "";

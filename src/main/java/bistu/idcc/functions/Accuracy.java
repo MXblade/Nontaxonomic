@@ -1,4 +1,4 @@
-package bistu.idcc.exam;
+package bistu.idcc.functions;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

@@ -16,38 +16,32 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import bistu.idcc.functions.ClearTxt_Path;
-
+/**
+ * 计算语料的句法特征，包括n_v的关系特征，v的关系特征，v_n的关系特征
+ * 需给定ltp依存句法分析分好的文件夹路径，和输出结果路径
+ */
 public class Feature_Ltp {
 
-//	String ltppath = "sourcefile/features/ltp";
-//	String outpath = "sourcefile/features/single/f4_mdp.txt";
 	
 	public Feature_Ltp(String ltppath, String outpath) throws IOException{
 		ClearTxt_Path clear = new ClearTxt_Path();
 		clear.cleartxt(outpath);
-		//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
-
 		
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
 		File ltp = new File(ltppath);
 		File[] ltplist = ltp.listFiles();
-		int count = 0;
-		int count1 = 0;
 		for(File f:ltplist){
-			count++;
 			String[][] wcp = readxml(f);
 			int[] mdp = getmdp(wcp);
-//			if(mdp != 0){
-//				count1 ++;
-//			}
-			//System.out.println(mdp + " " + count);
-			String f_dp = String.valueOf(mdp[0]) + " " + String.valueOf(mdp[1]) + " " + String.valueOf(mdp[2]);
+			String f_dp = "";
+			for(int i = 0; i < mdp.length; i++){
+				f_dp = f_dp + String.valueOf(3695+i) + ":" + String.valueOf(mdp[i]) + " ";
+			}
 			bw.write(f_dp);
 			//bw.write(String.valueOf(mdp));
 			bw.newLine();
 		}
 		bw.close();
-		//System.out.println(count1);
 	}
 	
 	public String[][] readxml(File f){
@@ -89,41 +83,37 @@ public class Feature_Ltp {
 		int[] mdp = new int[3];
 		if(wcp[0][1].equals(wcp[1][0]))
 		{
-			if(wcp[0][2].equals("SBV")){
+			if(wcp[0][2].equals("SBV"))
 				mdp[0] = 2;
-			}
-			else if(wcp[0][2].equals("ATT"))
-				mdp[0] = -1;
-			
-//			else if(wcp[0][2].equals("ATT")){
-//				n_v = - 1;
-//			}
+//			else if(wcp[0][2].equals("ATT"))
+//				mdp[0] = -1;
 		}
 		if(wcp[1][1].equals("-1")){
 			if(wcp[1][2].equals("HED"))
 				mdp[1] = 5;
 		}
 		if(wcp[2][1].equals(wcp[1][0])){
-			
-			
-			if(wcp[2][2].equals("IOB") || wcp[2][2].equals("POB")){
+			if(wcp[2][2].equals("IOB") || wcp[2][2].equals("POB"))
 				mdp[2] = 1;
-			}
 			else if(wcp[2][2].equals("VOB"))
 				mdp[2] = 2;
-			else if(wcp[1][2].equals("ATT"))
-				mdp[2] = -1;
-			
-//			else if(wcp[1][2].equals("ATT")){
-//				mdp = mdp - 1;
-//			}
+//			else if(wcp[1][2].equals("ATT"))
+//				mdp[2] = -1;
 		}
-		
-		//int ee = mdp[0] + mdp[1] + mdp[2];
-		
 		return mdp;
 	}
-	public int pipei(String s){
+	
+	
+	
+	
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		Feature_Ltp ftest = new Feature_Ltp("sourcefile/second/dp_test", "sourcefile/second/f_dp_test_4.txt");
+		Feature_Ltp ftrain = new Feature_Ltp("sourcefile/second/dp_train", "sourcefile/second/f_dp_train_4.txt");
+		
+	}
+	
+/*	public int pipei(String s){
 		int num = 0;
 		if(s.equals("IS"))
 			num = 1;
@@ -146,11 +136,6 @@ public class Feature_Ltp {
 
 		return num;
 	}
-	public static void main(String[] args) throws IOException{
-		// TODO Auto-generated method stub
-		Feature_Ltp ftest = new Feature_Ltp("sourcefile/second/dp_test", "sourcefile/second/f_dp_test_4.txt");
-		Feature_Ltp ftrain = new Feature_Ltp("sourcefile/second/dp_train", "sourcefile/second/f_dp_train_4.txt");
-		
-	}
+*/
 
 }

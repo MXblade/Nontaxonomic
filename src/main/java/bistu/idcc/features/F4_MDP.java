@@ -31,15 +31,11 @@ public class F4_MDP {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outpath), "UTF-8"));
 		File ltp = new File(ltppath);
 		File[] ltplist = ltp.listFiles();
-		int count = 0;
-		int count1 = 0;
+//		int count = 0;
 		for(File f:ltplist){
-			count++;
+//			count++;
 			String[][] wcp = readxml(f);
 			int mdp = getmdp(wcp);
-			if(mdp != 0){
-				count1 ++;
-			}
 			//System.out.println(mdp + " " + count);
 			bw.write(String.valueOf(mdp));
 			bw.newLine();

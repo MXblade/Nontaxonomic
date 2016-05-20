@@ -1,4 +1,4 @@
-package bistu.idcc.second_fea;
+package bistu.idcc.functions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +9,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import bistu.idcc.functions.ClearTxt_Path;
-
+/**
+ * 给定inpath1，inpath2，outpath
+ * 将inpath2对应的文件的内容 merge到inpath1文件，并输出到outpath
+ * 格式：inpath1内容 inpath2内容
+ */
 public class Merge {
 
 	public void merge(String inpath1, String inpath2, String outpath)throws IOException{
@@ -20,14 +24,9 @@ public class Merge {
 		clear.cleartxt(outpath);
 		String temp1 = null;
 		String temp2 = null;
-		while(((temp1 = br1.readLine())!=null) && ((temp2 = br2.readLine())!=null)){
-			String[] tlist = temp2.split(" ");
-			String temp = temp1;
-			for(int i = 0; i < tlist.length; i++){
-				temp = temp + " " + String.valueOf(i+3695) + ":" + tlist[i];
-			}
-			//String temp = temp1 + " 3695:" + temp2;
-			bw.write(temp);
+		while(((temp1 = br1.readLine())!=null) && ((temp2 = br2.readLine())!=null))
+		{
+			bw.write(temp1 + " " + temp2);
 			bw.newLine();
 		}
 		bw.close();
